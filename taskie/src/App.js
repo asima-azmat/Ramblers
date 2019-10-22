@@ -13,7 +13,14 @@ class App extends Component {
   uiConfig = {
     signInFlow: "popup",
     signInOptions: [
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+      {
+        provider: 'microsoft.com',
+        providerName: 'Microsoft',
+        buttonColor: '#2F2F2F',
+        iconUrl: '<icon-url-of-sign-in-button>',
+        loginHintKey: 'login_hint',
+      }
     ],
     callbacks: {
       signInSuccess: () => false
