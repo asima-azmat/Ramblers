@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 import firebase from "firebase";
-import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
+import * as firebaseui from "firebaseui";
+import "firebaseui/dist/firebaseui.css";
 
 firebase.initializeApp({
   apiKey: "AIzaSyBZxv3ohMkvQ4HxCzqfkhToT0Wf3OdJR2c",
@@ -17,19 +18,18 @@ firebase.initializeApp({
 class App extends Component {
   state = { isSignedIn: false };
   uiConfig = {
-    signInFlow: "popup",
+    signInSuccessUrl: "<url-to-redirect-to-on-success>",
     signInOptions: [
-      firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      {
-        provider: "microsoft.com",
-        providerName: "Microsoft",
-        buttonColor: "#2F2F2F",
-        iconUrl: "<icon-url-of-sign-in-button>",
-        loginHintKey: "login_hint"
-      }
+      // Leave the lines as is for the providers you want to offer your users.
+      firebase.auth.GoogleAuthProvider.PROVIDER_ID
     ],
-    callbacks: {
-      signInSuccess: () => false
+    // tosUrl and privacyPolicyUrl accept either url string or a callback
+    // function.
+    // Terms of service url/callback.
+    tosUrl: "<your-tos-url>",
+    // Privacy policy url/callback.
+    privacyPolicyUrl: function() {
+      window.location.assign("<your-privacy-policy-url>");
     }
   };
 
@@ -38,6 +38,11 @@ class App extends Component {
   };
 
   componentDidMount = () => {
+    // Initialize the FirebaseUI Widget using Firebase.
+    const ui = new firebaseui.auth.AuthUI(firebase.auth());
+    // The start method will wait until the DOM is loaded.
+    ui.start("#firebaseui-auth-container", this.uiConfig);
+
     firebase.auth().onAuthStateChanged(user => {
       this.setState({ isSignedIn: !!user });
       console.log("user", user);
@@ -48,7 +53,7 @@ class App extends Component {
 
     db.collection("users")
       .add({
-        first: "Ada",
+        first: "FFMM",
         last: "Lovelace",
         born: 1815
       })
@@ -69,6 +74,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <div id="firebaseui-auth-container"></div>
         {this.state.isSignedIn ? (
           <span>
             <div>Signed In!</div>
@@ -77,12 +83,7 @@ class App extends Component {
             <h3>email: {firebase.auth().currentUser.email}</h3>
             <h4>id: : {firebase.auth().currentUser.uid}</h4>
           </span>
-        ) : (
-          <StyledFirebaseAuth
-            uiConfig={this.uiConfig}
-            firebaseAuth={firebase.auth()}
-          />
-        )}
+        ) : null}
       </div>
     );
   }
