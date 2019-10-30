@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import firebase, { db } from "../firebase.js";
 import * as firebaseui from "firebaseui";
 import "firebaseui/dist/firebaseui.css";
-//import firebase from "../Firebase.js";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import Grid from "@material-ui/core/Grid";
+import CreateUser from "./CreateUser.js";
+import Home from "./Home.js";
+import { BrowserRouter as Redirect, Router, Route } from "react-router-dom";
 
 class Signup extends Component {
   state = { isSignedIn: false };
@@ -41,19 +45,41 @@ class Signup extends Component {
     });
   };
 
+  renderRedirect = () => {
+    return <Redirect to="/Home" />;
+  };
   render() {
     return (
       <div className="App">
         {this.state.isSignedIn ? (
-          <span>
-            <div>Signed In!</div>
-            <button onClick={() => firebase.auth().signOut()}>Sign out!</button>
-            <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
-            <h3>email: {firebase.auth().currentUser.email}</h3>
-            <h4>id: : {firebase.auth().currentUser.uid}</h4>
-          </span>
+          <CreateUser></CreateUser>
         ) : (
-          <div id="firebaseui-auth-container"></div>
+          <Grid container component="main" className="root">
+            <CssBaseline />
+            <Grid item m={12} sm={6}>
+              <h1>Taskie</h1>
+            </Grid>
+            <Grid
+              item
+              m={20}
+              sm={6}
+              elevation={6}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center"
+              }}
+            >
+              <h5>
+                It’s a platform for your team to create, assign, follow up
+                tasks.
+                <br /> Get help when you are needed.
+                <br />
+                By just login with your company email
+              </h5>
+              <div id="firebaseui-auth-container"></div>
+            </Grid>
+          </Grid>
         )}
       </div>
     );
