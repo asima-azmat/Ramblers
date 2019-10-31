@@ -52,7 +52,7 @@ class Signup extends Component {
     return (
       <div className="App">
         {this.state.isSignedIn ? (
-          <CreateUser></CreateUser>
+          <Home></Home>
         ) : (
           <Grid container component="main" className="root">
             <CssBaseline />
