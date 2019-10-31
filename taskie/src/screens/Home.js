@@ -15,7 +15,8 @@ class Home extends Component {
     };
   }
   componentDidMount = () => {
-    const user = db
+    const user = firebase
+      .firestore()
       .collection("User")
       .doc(`${firebase.auth().currentUser.uid}`);
 

@@ -61,7 +61,12 @@ class CreateUser extends Component {
             <input type="text" name="lastName" onChange={this.changeHandler} />
             <br />
             <label>email:</label>
-            <input type="text" name="email" onChange={this.changeHandler} />
+            <input
+              type="text"
+              name="email"
+              onChange={this.changeHandler}
+              disabled
+            />
             <br />
             <label>Team:</label>
             <input type="text" name="team" onChange={this.changeHandler} />
