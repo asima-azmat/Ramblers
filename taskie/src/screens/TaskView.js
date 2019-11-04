@@ -15,15 +15,36 @@ class TaskView extends Component {
             taskAssignedTo: ""
         };
     }
+    componentDidMount = () => {
+        const taskView = firebase
+          .firestore()
+          .collection("Task")
+          .doc(`${firebase.database()}`);
+    
+        taskView
+          .get()
+          .then(doc => {
+            if (doc.exists) {
+              this.setState({ taskTitle: doc.data().taskTitle });
+              this.setState({ taskDetails: doc.data().taskDetails });
+              this.setState({ taskId: doc.data().id });
+            } else {
+              // doc.data() will be undefined in this case
+              console.log("No such document!");
+            }
+          })
+          .catch(function(error) {
+            console.log("Error getting document:", error);
+          });
+      };
 
 render() {
     return(
         <div className="taskView">
-            <form>
                 <h1>
-                    
+                    List of Tasks for Marry
                 </h1>
-            </form>
+
         </div>
     )
 };
