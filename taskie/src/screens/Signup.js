@@ -7,6 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import CreateUser from "./CreateUser.js";
 import Dashboard from "./Dashboard.js";
 import { BrowserRouter as Redirect, Router, Route } from "react-router-dom";
+import TaskForm from "./TaskForm.js";
 
 class Signup extends Component {
   state = { isSignedIn: false };
@@ -49,7 +50,7 @@ class Signup extends Component {
     return (
       <div className="App">
         {this.state.isSignedIn ? (
-          <Dashboard></Dashboard>
+          <TaskForm></TaskForm>
         ) : (
           <Grid container component="main" className="root">
             <CssBaseline />
