@@ -5,7 +5,7 @@ import "firebaseui/dist/firebaseui.css";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import CreateUser from "./CreateUser.js";
-import Home from "./Home.js";
+import Dashboard from "./Dashboard.js";
 import { BrowserRouter as Redirect, Router, Route } from "react-router-dom";
 
 class Signup extends Component {
@@ -45,14 +45,11 @@ class Signup extends Component {
     });
   };
 
-  renderRedirect = () => {
-    return <Redirect to="/Home" />;
-  };
   render() {
     return (
       <div className="App">
         {this.state.isSignedIn ? (
-          <Home></Home>
+          <Dashboard></Dashboard>
         ) : (
           <Grid container component="main" className="root">
             <CssBaseline />
