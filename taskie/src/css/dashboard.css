@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+* {
+  font-family: "Open Sans", sans-serif;
+}
+.column {
+  float: left;
+  width: 25%;
+  border-left: 1px solid black;
+  height: 500px;
+}
+
+/* Clear floats after the columns */
+.dashboard:after {
+  content: "";
+  display: table;
+  clear: both;
+  margin: 0;
+}
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+.done-title {
+  background-color: #48a690;
+  height: 1cm;
+}
+.review-title {
+  background-color: #f98f56;
+  height: 1cm;
+}
+.accepted-title {
+  background-color: #609eeb;
+  height: 1cm;
+}
+.help-title {
+  background-color: #f24e4e;
+  height: 1cm;
+}
+
+title {
+  flex-grow: 1;
+}

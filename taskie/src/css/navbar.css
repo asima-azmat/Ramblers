@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+
+.nav-bar {
+  background-color: #323a40;
+  display: flex;
+  padding-top: 0.25cm;
+}
+.logo {
+  align-content: center;
+  width: 20%;
+}
+
+.title {
+  width: 55%;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+}
+
+.user {
+  width: 25%;
+  color: white;
+  font-family: "Open Sans", sans-serif;
+}
