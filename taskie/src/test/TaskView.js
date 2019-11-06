@@ -1,4 +1,8 @@
+
+//Firebase
 var firebase = require('firebase');
+
+//Firebase Configurations
 const firebaseConfig = {
   apiKey: "AIzaSyBZxv3ohMkvQ4HxCzqfkhToT0Wf3OdJR2c",
   authDomain: "ramblers-253808.firebaseapp.com",
@@ -9,52 +13,81 @@ const firebaseConfig = {
   appId: "1:751981469104:web:b33d1c2a04b9920023ca75",
   measurementId: "G-DESLD4X1X5"
 };
- function add_to_table(name) {
-   firebase.firestore().collection('users').add({
-     name: name
-   });
+
+
+let data = {
+  taskAssignedTo: 'asima.azmat@dpschool.io',
+  taskAttachedFile: 'dummy.pdf',
+  taskCreatedBy: 'asima.azmat@dpschool.io',
+  taskDeadline: firebase.firestore.Timestamp.fromDate(new Date('November 10, 2019 11:00:00 AM')),
+  taskDetails: 'details',
+  taskStatus: 'Help Needed',
+  taskTitle: 'Make Presentation'
+};
+////////////Adding data to DB/////////////
+ async function addTask() {
+
+//Data definition
+  let data = {
+   taskAssignedTo: 'asima.azmat@dpschool.io',
+   taskAttachedFile: 'dummy.pdf',
+   taskCreatedBy: 'asima.azmat@dpschool.io',
+   taskDeadline: firebase.firestore.Timestamp.fromDate(new Date('November 10, 2019 11:00:00 AM')),
+   taskDetails: 'details',
+   taskStatus: 'Help Needed',
+   taskTitle: 'Make Presentation'
+ };
+
+//Add defined data in collection "Task"
+firebase.firestore().collection('Task').add({
+  taskAssignedTo: data.taskAssignedTo,
+  taskAttachedFile: data.taskAttachedFile,
+  taskCreatedBy: data.taskCreatedBy,
+  taskDeadline: data.taskDeadline,
+  taskDetails: data.taskDetails,
+  taskStatus: data.taskStatus,
+  taskTitle: data.taskTitle
+});
+
+//return
+return "Task data added succesfully.. :)";
  }
- // firebase.initializeApp(firebaseConfig);
- // try{
- //   add_to_table("AsimaAzmat")
- // console.log("success")
- // } catch(err) {
- //     console.log("failed")
- //     console.log(err)
- async function getMarkers() {
-   const markers = [];
-   await firebase.firestore().collection('Task').get()
-     .then(querySnapshot => {
-       querySnapshot.docs.forEach(doc => {
-       markers.push(doc.data());
-     });
-   });
-   return markers;
- }
+
+ //Task Added
+ async function taskAdded() {
+   try{
+  let list = await addTask();
+  console.log(list)
+  console.log("Task data added succesfully.. :)")
+   } catch(e) {
+     console.log(e)
+     console.log("error")
+   }
+ 
+  }
+
+//Initialize database
 firebase.initializeApp(firebaseConfig);
-async function hello() {
-let list = await getMarkers();
-console.log(JSON.stringify(list))
+
+//Task Added
+taskAdded();
+
+
+////////////Adding data to DB/////////////
+async function getTasks() {
+    const Tasks = {};
+  //read data from DB
+     await firebase.firestore().collection('Task').get()
+       .then(querySnapshot => {
+         querySnapshot.docs.forEach(doc => {
+         Tasks.push(doc.data());
+       });
+     });
+     return Tasks;
+   }
+
+async function listTasks() {
+  let listOfTasks = await getTasks();
+  console.log(JSON.stringify(listOfTasks))
 }
-hello();
-// var requestbody = {
-//     "timeMin": datetime,
-//     "timeMax": datetime,
-//     "timeZone": string,
-//     "groupExpansionMax": integer,
-//     "calendarExpansionMax": integer,
-//     "items": [
-//       {
-//         "id": string
-//       }
-//     ]
-//   }
-// var request = require('request');
-// request.post({
-//   headers: {'content-type' : 'application/x-www-form-urlencoded'},
-//   url:     'https://www.googleapis.com/calendar/v3/freeBusy',
-//   json: true,
-//   body: requestbody,
-// }, function(error, response, body){
-//   console.log(body);
-// });
+listTasks().then(()=>{console.log("All tasks are listed above.")});
