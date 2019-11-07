@@ -13,6 +13,7 @@ class TaskForm extends Component {
     };
   }
 
+
   changeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
@@ -41,6 +42,7 @@ class TaskForm extends Component {
       });
   };
   render() {
+    console.log("fuck you");
     return (
       <div className="task">
         <form onSubmit={this.submitHandler}>

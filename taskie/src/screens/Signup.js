@@ -50,7 +50,7 @@ class Signup extends Component {
     return (
       <div className="App">
         {this.state.isSignedIn ? (
-          <TaskForm></TaskForm>
+          <Dashboard></Dashboard>
         ) : (
           <Grid container component="main" className="root">
             <CssBaseline />
