@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import css from "../css/dashboard.css";
 import { red } from "@material-ui/core/colors";
 import Navbar from "../components/Navbar";
+import Task from "../components/Task";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -24,6 +25,9 @@ class Dashboard extends Component {
                 <Typography component="h1" variant="h6" color="inherit" noWrap>
                   Help needed
                 </Typography>
+              </div>
+              <div>
+                <Task></Task>
               </div>
             </div>
             <div className="column">
