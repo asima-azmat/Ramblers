@@ -10,22 +10,13 @@ import { BrowserRouter } from "react-router-dom";
 class App extends Component {
   render() {
     // return <Signup />;
-    return(<BrowserRouter>
-   
-    <Route path="/" exact component={Signup} />
-    <Route path="/TaskForm"  component={TaskForm} />
-  
-  </BrowserRouter>);
+    return (
+      <BrowserRouter>
+        <Route path="/" exact component={Signup} />
+        <Route path="/TaskForm" component={TaskForm} />
+      </BrowserRouter>
+    );
   }
 }
-
-// ReactDOM.render((
-//   <Router history = {browserHistory}>
-//      <Route path = "/" component = {App}>
-//         <IndexRoute component = {Signup} />
-//         <Route path = "./TaskForm" component = {TaskForm} />
-//      </Route>
-//   </Router>
-// ), document.getElementById('app'))
 
 export default App;
