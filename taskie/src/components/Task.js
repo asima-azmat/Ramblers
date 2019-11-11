@@ -7,43 +7,65 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 
 
-function Task(props) {
+function Task() {
 
   const [task,setTask] = useState([]);
    useEffect(() => {
     firebase.firestore().collection('Task').get()
     .then(querySnapshot => {
       querySnapshot.docs.forEach(doc => {
-      console.log(doc.data());
       setTask(doc.data());
       });
    });
    }, []);
+  
+   console.log(task);
 
   //Rendering the Task card
-    return (
-      <div className="task-card">
-            <div>
-            <Card>
+  return (
+    <div className="task-card">
+      {/* {
+        task.map((taskObject, index) => {
+          return(
+            <div key = {`${taskObject.createdBy}`}>
+              <Card>
                 <CardContent>
-                <Typography color="textSecondary" gutterBottom>
-                Created By: {task.taskCreatedBy}
-                </Typography>
-                <Typography variant="h5" component="h2">
-                Task Title: {task.taskTitle}
-                </Typography>
-                <Typography color="textSecondary">
-                Deadline:
-                </Typography>
-                <Typography variant="body2" component="p">
-                </Typography>
+                  <Typography color="textSecondary" gutterBottom>
+                    Created By: {taskObject.createdBy}
+                  </Typography>
+                  <Typography variant="h5" component="h2">
+                    Title: {taskObject.taskTitle}
+                  </Typography>
+                  <Typography color="textSecondary">
+                    Deadline: {taskObject.deadline}
+                  </Typography>
+                  <Typography variant="body2" component="p">
+                  </Typography>
                 </CardContent>
-                <CardActions>
-                    <Button size="small">Learn More</Button>
-                </CardActions>
             </Card>
             </div>
+
+          );
+        })
+      } */}
+      <div>
+        <Card>
+          <CardContent>
+            <Typography color="textSecondary" gutterBottom>
+              Created By: {task.createdBy}
+            </Typography>
+            <Typography variant="h5" component="h2">
+              Title: {task.taskTitle}
+            </Typography>
+            <Typography color="textSecondary">
+              Deadline: {task.deadline}
+            </Typography>
+            <Typography variant="body2" component="p">
+            </Typography>
+          </CardContent>
+       </Card>
       </div>
-    );
+    </div>
+  );
 }
 export default Task;
