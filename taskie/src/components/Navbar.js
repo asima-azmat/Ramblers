@@ -11,11 +11,13 @@ import Button from "@material-ui/core/Button";
 class Navbar extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      userImage: ""
+    };
   }
-  componentDidMount = () => {};
-  // meanwhile we get the storage image
-  userImage = `${firebase.auth().currentUser.photoURL}`;
+  componentDidMount = () => {
+    this.setState({ userImage: firebase.auth().currentUser.photoURL });
+  };
 
   render() {
     return (
@@ -26,9 +28,8 @@ class Navbar extends Component {
         <div className="title">
           <h3>Team tasks in progress</h3>
         </div>
-
         <div className="user">
-          <Avatar src={this.userImage}></Avatar>
+          <Avatar src={this.state.userImage}></Avatar>
           <h5>{firebase.auth().currentUser.displayName}</h5>
           <Button onClick={() => firebase.auth().signOut()}>Logout</Button>
         </div>
