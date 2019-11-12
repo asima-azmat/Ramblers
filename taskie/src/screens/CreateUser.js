@@ -1,19 +1,42 @@
 import React, { Component } from "react";
 import firebase, { db } from "firebase";
 import { BrowserRouter as Redirect, Router, Route } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 class CreateUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      id: "",
+      user: false,
+      userid: firebase.auth().currentUser.uid,
       firstName: "",
       lastName: "",
-      email: "",
+      email: firebase.auth().currentUser.email,
       skills: [],
-      team: ""
+      team: "",
+      company: ""
     };
   }
+  componentDidMount = () => {
+    var doc = firebase
+      .firestore()
+      .collection("User")
+      .doc(this.state.userid);
+
+    doc
+      .get()
+      .then(doc => {
+        if ((doc.data().firstName = !"")) {
+          console.log(doc.data());
+          this.setState({
+            user: true
+          });
+        }
+      })
+      .catch(function(error) {
+        console.log("Error getting document:", error);
+      });
+  };
 
   changeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -25,7 +48,10 @@ class CreateUser extends Component {
     const updateRef = firebase
       .firestore()
       .collection("User")
-      .doc(`${firebase.auth().currentUser.uid}`);
+      .doc(this.state.userid);
+
+    console.log(this.props);
+
     updateRef
       .set({
         lastName,
@@ -40,9 +66,10 @@ class CreateUser extends Component {
           email: "",
           firstName: "",
           team: "",
-          company: "",
-          notFirst: true
+          company: ""
         });
+        console.log("added");
+        this.props.history.push(`/Home`);
       })
       .catch(error => {
         console.error("Error adding document: ", error);
@@ -51,33 +78,46 @@ class CreateUser extends Component {
   render() {
     return (
       <div className="user">
-        <div className="create-user">
-          <form onSubmit={this.submitHandler}>
-            <h1>Welcome!</h1>
-            <label>First name: </label>
-            <input type="text" name="firstName" onChange={this.changeHandler} />
-            <br />
-            <label>Last name: </label>
-            <input type="text" name="lastName" onChange={this.changeHandler} />
-            <br />
-            <label>email:</label>
-            <input
-              type="text"
-              name="email"
-              onChange={this.changeHandler}
-              disabled
-            />
-            <br />
-            <label>Team:</label>
-            <input type="text" name="team" onChange={this.changeHandler} />
-            <br />
-            <label>company:</label>
-            <input type="text" name="company" onChange={this.changeHandler} />
-            <br />
-            <input type="submit"></input>
-          </form>
-          <button onClick={() => firebase.auth().signOut()}>Cancel</button>
-        </div>
+        {this.state.user ? (
+          <div className="create-user">
+            <form onSubmit={this.submitHandler}>
+              <h1>Welcome!</h1>
+              <label>First name: </label>
+              <input
+                type="text"
+                name="firstName"
+                onChange={this.changeHandler}
+              />
+              <br />
+              <label>Last name: </label>
+              <input
+                type="text"
+                name="lastName"
+                onChange={this.changeHandler}
+              />
+              <br />
+              <label>email:</label>
+              <input
+                type="text"
+                name="email"
+                onChange={this.changeHandler}
+                disabled
+              />
+              <br />
+              <label>Team:</label>
+              <input type="text" name="team" onChange={this.changeHandler} />
+              <br />
+              <label>company:</label>
+              <input type="text" name="company" onChange={this.changeHandler} />
+              <br />
+              <input type="submit"></input>
+            </form>
+
+            <button onClick={() => firebase.auth().signOut()}>Cancel</button>
+          </div>
+        ) : (
+          "hi"
+        )}{" "}
       </div>
     );
   }

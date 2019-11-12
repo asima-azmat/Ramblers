@@ -6,6 +6,10 @@ import css from "../css/dashboard.css";
 import { red } from "@material-ui/core/colors";
 import Navbar from "../components/Navbar";
 import Task from "../components/Task";
+import TaskForm from "./TaskForm";
+import CreateUser from "./CreateUser";
+import addicon from "../assets/addicon.png";
+import { Link, BrowserRouter } from "react-router-dom";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -14,6 +18,9 @@ class Dashboard extends Component {
   }
   componentDidMount = () => {};
 
+  // redirect() {
+  //   return <CreateUser />;
+  // }
   render() {
     return (
       <div className="app">
@@ -28,6 +35,13 @@ class Dashboard extends Component {
               </div>
               <div>
                 <Task></Task>
+                <br></br>
+                <Link to="/TaskForm">
+                  <button>
+                    <img src={addicon} style={{ width: 20, height: 20 }}></img>{" "}
+                    Create a new task
+                  </button>
+                </Link>
               </div>
             </div>
             <div className="column">

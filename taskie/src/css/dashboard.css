@@ -41,3 +41,13 @@
 title {
   flex-grow: 1;
 }
+.dashboard button {
+  background-color: #f98f56;
+  height: 92px;
+  width: 80%;
+  border-radius: 25px;
+}
+.dashboard img {
+  width: 150;
+  height: 20;
+}
