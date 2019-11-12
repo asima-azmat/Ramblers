@@ -6,7 +6,8 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import CreateUser from "./CreateUser.js";
 import Dashboard from "./Dashboard.js";
-import { BrowserRouter as Redirect, Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import TaskForm from "./TaskForm.js";
 
 class Signup extends Component {
@@ -42,16 +43,15 @@ class Signup extends Component {
 
     firebase.auth().onAuthStateChanged(user => {
       this.setState({ isSignedIn: !!user });
-      console.log("user", user);
     });
   };
 
   render() {
-    return (
-      <div className="App">
-        {this.state.isSignedIn ? (
-          <Dashboard></Dashboard>
-        ) : (
+    if (this.state.isSignedIn) {
+      return <Redirect to="/CreateUser" />;
+    } else {
+      return (
+        <div className="App">
           <Grid container component="main" className="root">
             <CssBaseline />
             <Grid item m={12} sm={6}>
@@ -78,9 +78,9 @@ class Signup extends Component {
               <div id="firebaseui-auth-container"></div>
             </Grid>
           </Grid>
-        )}
-      </div>
-    );
+        </div>
+      );
+    }
   }
 }
 export default Signup;
