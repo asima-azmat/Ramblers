@@ -25,29 +25,29 @@ class TaskForm extends Component {
   componentDidMount() {
     let that = this;
 
-    firebase.auth().onAuthStateChanged(function(currentUser){
+    firebase.auth().onAuthStateChanged(function(currentUser) {
       that.setState({ userid: currentUser.uid, email: currentUser.email });
-        
-    var doc = firebase
-      .firestore()
-      .collection("User")
-      .doc(currentUser.uid);
-   
-    doc
-      .get()  
-      .then(doc => {
-        that.setState({
-          company: doc.data().company,
-          team: doc.data().team,
-          createdBy: currentUser.displayName,
-          taskStatus: "Help"
+
+      var doc = firebase
+        .firestore()
+        .collection("User")
+        .doc(currentUser.uid);
+
+      doc
+        .get()
+        .then(doc => {
+          that.setState({
+            company: doc.data().company,
+            team: doc.data().team,
+            createdBy: currentUser.uid,
+            taskStatus: "Help"
+          });
+        })
+        .catch(function(error) {
+          console.log("Error getting document:", error);
         });
-      })
-      .catch(function(error) {
-        console.log("Error getting document:", error);
-      });
     });
-  };
+  }
 
   changeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -98,6 +98,11 @@ class TaskForm extends Component {
           taskStatus: "",
           taskLink: ""
         });
+<<<<<<< HEAD
+=======
+        console.log(this.props);
+        alert("Hi!");
+>>>>>>> Redirect to dashboard if is not a first time user
         this.props.history.push("/Home");
       })
       .catch(error => {
