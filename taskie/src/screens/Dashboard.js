@@ -6,7 +6,9 @@ import css from "../css/dashboard.css";
 import { red } from "@material-ui/core/colors";
 import Navbar from "../components/Navbar";
 import TaskForm from "./TaskForm";
-import {Link, BrowserRouter } from "react-router-dom";
+import CreateUser from "./CreateUser";
+import addicon from "../assets/addicon.png";
+import { Link, BrowserRouter } from "react-router-dom";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -15,9 +17,9 @@ class Dashboard extends Component {
   }
   componentDidMount = () => {};
 
-  redirect(){
-    return <TaskForm />
-  }
+  // redirect() {
+  //   return <CreateUser />;
+  // }
   render() {
     return (
       <div className="app">
@@ -30,17 +32,15 @@ class Dashboard extends Component {
                   Help needed
                 </Typography>
               </div>
-
               <div>
                 <br></br>
-        
                 <Link to="/TaskForm">
-                <button> Create a new task</button>
-                {/* <Link>Create a new task</Link> */}
+                  <button>
+                    <img src={addicon} style={{ width: 20, height: 20 }}></img>{" "}
+                    Create a new task
+                  </button>
                 </Link>
-             
               </div>
-
             </div>
             <div className="column">
               <div className="accepted-title">
