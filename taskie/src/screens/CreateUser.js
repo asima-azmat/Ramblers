@@ -11,7 +11,8 @@ class CreateUser extends Component {
       lastName: "",
       email: "",
       skills: [],
-      team: ""
+      team: "",
+      company: ""
     };
   }
 
