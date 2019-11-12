@@ -1,14 +1,23 @@
 import React, {useState, useEffect} from "react";
 import firebase from "firebase";
-//import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Card from '@material-ui/core/Card';
-//import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  card: {
+    minWidth: 275,
+    border: 5,
+  },
+  title: {
+    fontSize: 14,
+  },
+});
 
 
 function Task() {
-
+  const classes = useStyles();
   const [task,setTask] = useState([]);
   const taskArray = [];
    useEffect(() => {
@@ -32,10 +41,11 @@ function Task() {
       {
         task.map((taskObject, index) => {
           return(
-            <div key = {`${taskObject.createdBy}`}>
-              <Card>
+            <div key = {`${index}`}>
+              <br></br>
+              <Card className={classes.card}>
                 <CardContent>
-                  <Typography color="textSecondary" gutterBottom>
+                  <Typography className={classes.title} color="textSecondary" gutterBottom>
                     Created By: {taskObject.createdBy}
                   </Typography>
                   <Typography variant="h5" component="h2">
@@ -48,6 +58,7 @@ function Task() {
                   </Typography>
                 </CardContent>
             </Card>
+            <br></br>
             </div>
 
           );
