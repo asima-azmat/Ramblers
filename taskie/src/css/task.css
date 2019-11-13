@@ -1,0 +1,8 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
+* {
+  font-family: "Open Sans", sans-serif;
+}
+.task-card{
+border-color: black;
+border-width: 3px;
+}

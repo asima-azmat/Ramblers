@@ -26,8 +26,17 @@ class Navbar extends Component {
             style={{ width: 150, height: 50, paddingTop: 10 }}
           />
         </div>
-        <div className="title">
-          <h3>TEAM TASKS IN PROGRESS</h3>
+        <div className="team-dashboard">
+          <h3>TEAM DASHBOARD</h3>
+        </div>
+        <div className="my-notifications">
+          <h3>MY NOTIFICATIONS</h3>
+        </div>
+        <div className="my-team">
+          <h3>MY TEAM</h3>
+        </div>
+        <div className="my-me-time">
+          <h3>MY ME TIME</h3>
         </div>
 
         <div className="user">
