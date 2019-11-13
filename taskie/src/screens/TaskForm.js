@@ -1,7 +1,7 @@
-import React, { Component, useState, useEffect } from "react";
-import firebase, { db } from "firebase";
-import css from "../css/taskform.css";
-import { Link, BrowserRouter } from "react-router-dom";
+import React, { Component } from "react";
+import firebase from "firebase";
+// import css from "../css/taskform.css";
+// import { Link, BrowserRouter } from "react-router-dom";
 
 class TaskForm extends Component {
   constructor(props) {
@@ -16,7 +16,8 @@ class TaskForm extends Component {
       team: "",
       company: "",
       createdBy: "",
-      assignedTo: ""
+      assignedTo: "",
+      taskStatus: ""
     };
   }
 
@@ -32,7 +33,8 @@ class TaskForm extends Component {
         this.setState({
           company: doc.data().company,
           team: doc.data().team,
-          createdBy: this.state.userid
+          createdBy: this.state.userid,
+          taskStatus: "Help"
         });
       })
       .catch(function(error) {
@@ -56,7 +58,8 @@ class TaskForm extends Component {
       company,
       team,
       createdBy,
-      assignedTo
+      assignedTo,
+      taskStatus
     } = this.state;
     firebase
       .firestore()
@@ -70,7 +73,8 @@ class TaskForm extends Component {
         company,
         team,
         createdBy,
-        assignedTo
+        assignedTo,
+        taskStatus
       })
       .then(docRef => {
         this.setState({
@@ -82,7 +86,8 @@ class TaskForm extends Component {
           company: "",
           team: "",
           createdBy: "",
-          assignedTo: ""
+          assignedTo: "",
+          taskStatus: ""
         });
         console.log(this.props);
         this.props.history.push("/Home");

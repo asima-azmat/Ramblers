@@ -9,6 +9,7 @@ import TaskForm from "./TaskForm";
 import CreateUser from "./CreateUser";
 import addicon from "../assets/addicon.png";
 import { Link, BrowserRouter } from "react-router-dom";
+import Task from "../components/Task";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -41,6 +42,7 @@ class Dashboard extends Component {
                   </button>
                 </Link>
               </div>
+              <Task taskStatus="Help"></Task>
             </div>
             <div className="column">
               <div className="accepted-title">
@@ -48,6 +50,7 @@ class Dashboard extends Component {
                   Accepted
                 </Typography>
               </div>
+              <Task taskStatus="Accepted"></Task>
             </div>
             <div className="column">
               <div className="review-title">
@@ -55,6 +58,7 @@ class Dashboard extends Component {
                   To be reviewed
                 </Typography>
               </div>
+              <Task taskStatus="Review"></Task>
             </div>
             <div className="column">
               <div className="done-title">
@@ -68,6 +72,7 @@ class Dashboard extends Component {
                   Done
                 </Typography>
               </div>
+              <Task taskStatus="Done"></Task>
             </div>
           </div>
         </div>
