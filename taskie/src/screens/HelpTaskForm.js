@@ -3,7 +3,7 @@ import firebase from "firebase";
 import css from "../css/taskform.css";
 //import { Link, BrowserRouter } from "react-router-dom";
 
-class TaskForm extends Component {
+class HelpTaskForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -125,8 +125,6 @@ class TaskForm extends Component {
             onChange={this.changeHandler}
           />
           <br></br>
-          {/* to be edited later.. 
-          we also need to add one field to the state */}
           <p>
             Assigned by:
             <br></br>
@@ -142,4 +140,4 @@ class TaskForm extends Component {
     );
   }
 }
-export default TaskForm;
+export default HelpTaskForm;

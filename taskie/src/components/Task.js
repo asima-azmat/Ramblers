@@ -33,6 +33,8 @@ function Task(props) {
       querySnapshot.docs.forEach(doc => {
         //doc.data();
         taskArray.push(doc.data());
+        console.log(doc.id);
+        console.log(doc.data());
       });
       setTask(taskArray);
    });
@@ -60,7 +62,7 @@ function Task(props) {
       {
         task.map((taskObject, index) => {
           return(
-            <div key = {`${index}`}>
+            <div key = {`${index}`} className="task-card">
               <br></br>
               <Card className={classes.card}>
                 <CardContent>
@@ -82,23 +84,6 @@ function Task(props) {
           );
         })
       }
-      {/* <div>
-        <Card>
-          <CardContent>
-            <Typography color="textSecondary" gutterBottom>
-              Created By: {task.createdBy}
-            </Typography>
-            <Typography variant="h5" component="h2">
-              Title: {task.taskTitle}
-            </Typography>
-            <Typography color="textSecondary">
-              Deadline: {task.deadline}
-            </Typography>
-            <Typography variant="body2" component="p">
-            </Typography>
-          </CardContent>
-       </Card>
-      </div> */}
     </div>
   );
 }

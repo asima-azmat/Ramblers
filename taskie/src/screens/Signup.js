@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import firebase, { db } from "../firebase.js";
+import firebase from "../firebase.js";
 import * as firebaseui from "firebaseui";
 import "firebaseui/dist/firebaseui.css";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 import CreateUser from "./CreateUser.js";
 import Dashboard from "./Dashboard.js";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+//import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Redirect } from "react-router-dom";
 import TaskForm from "./TaskForm.js";
 

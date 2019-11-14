@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import firebase, { db } from "firebase";
-import { BrowserRouter as Redirect, Router, Route } from "react-router-dom";
-import Typography from "@material-ui/core/Typography";
-import { red } from "@material-ui/core/colors";
-import Avatar from "@material-ui/core/Avatar";
-import logo from "../assets/Taskie.png";
+import firebase from "firebase";
+// import { BrowserRouter as Redirect, Router, Route } from "react-router-dom";
+// import Typography from "@material-ui/core/Typography";
+// import { red } from "@material-ui/core/colors";
+// import Avatar from "@material-ui/core/Avatar";
+// import logo from "../assets/Taskie.png";
 import css from "../css/navbar.css";
 
-class Navbar extends Component {
+class SideBar extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -18,14 +18,7 @@ class Navbar extends Component {
 
   render() {
     return (
-      <div className="nav-bar">
-        <div className="logo">
-          <img
-            src={logo}
-            alt="Logo"
-            style={{ width: 150, height: 50, paddingTop: 10 }}
-          />
-        </div>
+      <div className="side-bar">
         <div className="team-dashboard">
           <h3>TEAM DASHBOARD</h3>
         </div>
@@ -38,13 +31,8 @@ class Navbar extends Component {
         <div className="my-me-time">
           <h3>MY ME TIME</h3>
         </div>
-
-        <div className="user">
-          <Avatar src={this.userImage}></Avatar>
-          <h5>{firebase.auth().currentUser.displayName}</h5>
-        </div>
       </div>
     );
   }
 }
-export default Navbar;
+export default SideBar;

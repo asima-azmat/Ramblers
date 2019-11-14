@@ -5,11 +5,13 @@ import Typography from "@material-ui/core/Typography";
 import css from "../css/dashboard.css";
 import { red } from "@material-ui/core/colors";
 import Navbar from "../components/Navbar";
+import SideBar from "../components/Sidebar";
 import TaskForm from "./TaskForm";
 import CreateUser from "./CreateUser";
 import addicon from "../assets/addicon.png";
 import { Link, BrowserRouter } from "react-router-dom";
 import Task from "../components/Task";
+import HelpTaskForm from "./HelpTaskForm";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -17,15 +19,14 @@ class Dashboard extends Component {
     this.state = {};
   }
   componentDidMount = () => {};
-
-  // redirect() {
-  //   return <CreateUser />;
-  // }
   render() {
     return (
       <div className="app">
         <Navbar></Navbar>
         <div className="screen">
+        {/* <div className="bar">
+          <SideBar></SideBar>
+        </div> */}
           <div className="dashboard">
             <div className="column">
               <div className="help-title">
@@ -42,7 +43,9 @@ class Dashboard extends Component {
                   </button>
                 </Link>
               </div>
-              <Task taskStatus="Help"></Task>
+              <Link to="/HelpTaskForm">
+                <Task taskStatus="Help"></Task>
+              </Link>
             </div>
             <div className="column">
               <div className="accepted-title">
