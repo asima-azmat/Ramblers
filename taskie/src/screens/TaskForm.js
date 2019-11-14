@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import firebase from "firebase";
 import css from "../css/taskform.css";
 //import { Link, BrowserRouter } from "react-router-dom";
+import { Link } from "@material-ui/core";
 
 class TaskForm extends Component {
   constructor(props) {
@@ -98,22 +99,17 @@ class TaskForm extends Component {
           taskStatus: "",
           taskLink: ""
         });
-<<<<<<< HEAD
-=======
-        console.log(this.props);
-        alert("Hi!");
->>>>>>> Redirect to dashboard if is not a first time user
         this.props.history.push("/Home");
       })
       .catch(error => {
         console.error("Error adding document: ", error);
       });
   };
-  
+
   cancelHandler = event => {
     event.preventDefault();
     this.props.history.push("/Home");
-   };
+  };
 
   render() {
     return (
@@ -154,7 +150,7 @@ class TaskForm extends Component {
             name="cancel"
             type="submit"
             value="Cancel"
-            onClick= {this.cancelHandler}
+            onClick={this.cancelHandler}
           ></input>
         </form>
       </div>
