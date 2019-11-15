@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import firebase, { db } from "firebase";
+//import firebase, { db } from "firebase";
 import { BrowserRouter as Redirect, Router, Route } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import css from "../css/dashboard.css";
@@ -43,9 +43,7 @@ class Dashboard extends Component {
                   </button>
                 </Link>
               </div>
-              <Link to="/HelpTaskForm">
                 <Task taskStatus="Help"></Task>
-              </Link>
             </div>
             <div className="column">
               <div className="accepted-title">

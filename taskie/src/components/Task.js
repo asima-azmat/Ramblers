@@ -4,6 +4,7 @@ import Typography from "@material-ui/core/Typography";
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   card: {
@@ -16,14 +17,17 @@ const useStyles = makeStyles({
 });
 
 
+function createTask(id,data){
+  return{...data, taskid: id};
+}
+
 function Task(props) {
   
   const classes = useStyles();
   const {taskStatus} = props;
-
   const taskArray = [];
   const [task,setTask] = useState([]);
-  
+
    useEffect(() => {
     firebase.firestore().collection('Task')
     .where("taskStatus", "==", props.taskStatus)
@@ -31,14 +35,18 @@ function Task(props) {
     .get()
     .then(querySnapshot => {
       querySnapshot.docs.forEach(doc => {
-        //doc.data();
-        taskArray.push(doc.data());
-        console.log(doc.id);
-        console.log(doc.data());
+        const newTask = createTask(doc.id, doc.data())
+        taskArray.push(newTask);
+        console.log(taskArray);        
       });
       setTask(taskArray);
+      //setTaskID(taskArray[0]);
+      console.log("this is task array:", taskArray);
+      //console.log("this is task ID:", taskID);
    });
    }, []);
+
+   
 
 //       const [photo, setPhoto] = useState([]);
 //       useEffect(() => {
@@ -55,19 +63,21 @@ function Task(props) {
 //         });
 //       })
 
-
   //Rendering the Task card
   return (
+    
     <div className="task-card">
       {
         task.map((taskObject, index) => {
           return(
+            
             <div key = {`${index}`} className="task-card">
               <br></br>
               <Card className={classes.card}>
+              <Link to='/HelpTaskForm/'>
                 <CardContent>
                   <Typography variant="h5" component="h2">
-                    Title: {taskObject.taskTitle}
+                    {taskObject.taskTitle}
                   </Typography>
                   <Typography className={classes.title} color="textSecondary" gutterBottom>
                     Created By: {taskObject.createdBy}
@@ -78,9 +88,10 @@ function Task(props) {
                   <Typography variant="body2" component="p">
                   </Typography>
                 </CardContent>
+                </Link>
             </Card>
             </div>
-
+            
           );
         })
       }
