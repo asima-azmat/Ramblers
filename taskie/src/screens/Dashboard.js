@@ -30,29 +30,21 @@ class Dashboard extends Component {
       .get()
       .then(doc => {
         let that = this;
-
-        firebase
-          .firestore()
-          .collection("Task")
-          .where("company", "==", doc.data().company)
-          .where("team", "==", doc.data().team)
-          .onSnapshot(function(snapshot) {
-            if (
-              that.state.listenToSnapshot &&
-              doc.data().createdby != firebase.firestore().currentuser.uid
-            ) {
+        if (this.state.listenToSnapshot) {
+          firebase
+            .firestore()
+            .collection("Task")
+            .where("company", "==", doc.data().company)
+            .where("team", "==", doc.data().team)
+            .onSnapshot(function(snapshot) {
               snapshot.docChanges().forEach(function(change) {
-                if (
-                  change.type === "added" &&
-                  change.doc.data().createdBy != doc.data().userid
-                ) {
+                if (change.type === "added") {
                   console.log("New task: ", change.doc.data());
                   that.setState({ notification: true });
                 }
               });
-            }
-            that.setState({ listenToSnapshot: true });
-          });
+            });
+        }
       })
       .catch(function(error) {
         console.log("Error getting document:", error);
