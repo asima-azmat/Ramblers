@@ -49,14 +49,15 @@ class Signup extends Component {
   render() {
     if (this.state.isSignedIn) {
       return <Redirect to="/CreateUser" />;
-    } else {
+    } 
+    else {
       return (
-        <div className="App">
-          <Grid container component="main" className="root">
+        <div className="right-box">
+          {/* <Grid container component="main" className="root">
             <CssBaseline />
-            <Grid item m={12} sm={6}>
+            <Grid item m={12} sm={6}> */}
               <h1>Taskie</h1>
-            </Grid>
+            {/* </Grid>
             <Grid
               item
               m={20}
@@ -67,7 +68,7 @@ class Signup extends Component {
                 flexDirection: "column",
                 alignItems: "center"
               }}
-            >
+            > */}
               <h5>
                 It’s a platform for your team to create, assign, follow up
                 tasks.
@@ -76,8 +77,8 @@ class Signup extends Component {
                 By just login with your company email
               </h5>
               <div id="firebaseui-auth-container"></div>
-            </Grid>
-          </Grid>
+            {/* </Grid>
+          </Grid> */}
         </div>
       );
     }

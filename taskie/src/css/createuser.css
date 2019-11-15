@@ -1,0 +1,116 @@
+#login-box
+{
+    /* position: relative;
+    margin: 5% auto;
+    height: 400px;
+    width: 600px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); */
+}
+
+.left-box
+{
+    position: absolute;
+    float: left;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    padding: 40px;
+    width: 300px;
+    height: 400px;    
+}
+
+/* .rightbox
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    box-sizing: border-box;
+    padding: 40px;
+    width: 300px;
+    height: 400px;
+    background-color: gray;
+    background-size: cover;
+    background-position: center;
+} */
+
+.right-box {
+    background-color: red;
+    position: relative;
+    margin: 5% auto;
+    height: 400px;
+    width: 600px;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+form {
+    position: relative;
+    /* background-color: #F3E6E4; */
+}
+
+label {
+    display: inline-block;
+    width: 50%;
+	text-align: center;
+	margin: 10px
+}
+.create-user {
+    
+}
+
+h1 {
+    padding-top: 6%;
+    padding-bottom: 4%;
+    font-size: large;
+    text-align: center;
+}
+
+h5 {
+    text-align: center;
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-bottom: 10%;
+    margin-top: 20%;
+}
+
+input[type=text] {
+    position: absolute;
+    border-radius: 5px;
+    width: 220px;
+}
+input[type=submit], input[type=button] {
+    width: 200px;
+    position: relative;
+    display: inline-block;
+    margin: 5%;
+    margin-left: 10%;
+    /* padding: 15px 15px; */
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    background-color: rgb(249, 143, 86);
+    border: none;
+    border-radius: 50px;
+    color: white;
+
+}
+
+button {
+    display: inline-block;
+    padding: 15px 25px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: rgb(249, 143, 86);
+    border: none;
+    border-radius: 15px;
+  }
+  
+
+/* save button rgb(249, 143, 86); */
