@@ -26,7 +26,6 @@ class CreateUser extends Component {
       .get()
       .then(doc => {
         if ((doc.data().firstName = !"")) {
-          console.log(doc.data());
           this.setState({
             user: true
           });
@@ -49,8 +48,6 @@ class CreateUser extends Component {
       .collection("User")
       .doc(this.state.userid);
 
-    console.log(this.props);
-
     updateRef
       .set({
         lastName,
@@ -67,7 +64,6 @@ class CreateUser extends Component {
           team: "",
           company: ""
         });
-        console.log("added");
         this.props.history.push(`/Home`);
       })
       .catch(error => {

@@ -16,7 +16,6 @@ const useStyles = makeStyles({
   },
 });
 
-
 function createTask(id,data){
   return{...data, taskid: id};
 }
@@ -36,45 +35,21 @@ function Task(props) {
     .then(querySnapshot => {
       querySnapshot.docs.forEach(doc => {
         const newTask = createTask(doc.id, doc.data())
-        taskArray.push(newTask);
-        console.log(taskArray);        
+        taskArray.push(newTask);   
       });
       setTask(taskArray);
-      //setTaskID(taskArray[0]);
-      console.log("this is task array:", taskArray);
-      //console.log("this is task ID:", taskID);
    });
    }, []);
 
-   
-
-//       const [photo, setPhoto] = useState([]);
-//       useEffect(() => {
-//         firebase.firestore().collection('User').doc(taskArray.createdBy)
-//         .get().then(function(doc) {
-//             if (doc.exists) {
-//                 console.log("Document data:", doc.data());
-//             } else {
-//                 // doc.data() will be undefined in this case
-//                 console.log("No such document!");
-//             }
-//         }).catch(function(error) {
-//             console.log("Error getting document:", error);
-//         });
-//       })
-
-  //Rendering the Task card
   return (
-    
     <div className="task-card">
       {
         task.map((taskObject, index) => {
           return(
-            
             <div key = {`${index}`} className="task-card">
               <br></br>
               <Card className={classes.card}>
-              <Link to='/HelpTaskForm/'>
+              <Link to={`/HelpTaskForm/${taskObject.taskid}`}>
                 <CardContent>
                   <Typography variant="h5" component="h2">
                     {taskObject.taskTitle}
@@ -91,11 +66,11 @@ function Task(props) {
                 </Link>
             </Card>
             </div>
-            
           );
         })
       }
     </div>
   );
+
 }
 export default Task;
