@@ -12,11 +12,15 @@ class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      displayName: "",
       userImage: ""
     };
   }
-  componentDidMount = () => {
-    this.setState({ userImage: firebase.auth().currentUser.photoURL });
+  componentDidMount() {
+    let that = this;
+    firebase.auth().onAuthStateChanged(function(currentUser){
+      that.setState({ userImage: currentUser.photoURL, displayName: currentUser.displayName });
+    })    
   };
 
   render() {
@@ -30,7 +34,7 @@ class Navbar extends Component {
         </div>
         <div className="user">
           <Avatar src={this.state.userImage}></Avatar>
-          <h5>{firebase.auth().currentUser.displayName}</h5>
+          <h5>{this.state.displayName}</h5>
           <Button onClick={() => firebase.auth().signOut()}>Logout</Button>
         </div>
       </div>

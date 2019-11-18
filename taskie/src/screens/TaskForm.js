@@ -12,7 +12,8 @@ class TaskForm extends Component {
       relatedRole: "",
       deadline: "",
       estimatedTime: "",
-      userid: firebase.auth().currentUser.uid,
+      userid: "",
+      // userid: firebase.auth().currentUser.uid,
       team: "",
       company: "",
       createdBy: "",
@@ -21,25 +22,31 @@ class TaskForm extends Component {
     };
   }
 
-  componentDidMount = () => {
+  componentDidMount() {
+    let that = this;
+
+    firebase.auth().onAuthStateChanged(function(currentUser){
+      that.setState({ userid: currentUser.uid, email: currentUser.email });
+        
     var doc = firebase
       .firestore()
       .collection("User")
-      .doc(this.state.userid);
-
+      .doc(currentUser.uid);
+   
     doc
-      .get()
+      .get()  
       .then(doc => {
-        this.setState({
+        that.setState({
           company: doc.data().company,
           team: doc.data().team,
-          createdBy: this.state.userid,
+          createdBy: currentUser.uid,
           taskStatus: "Help"
         });
       })
       .catch(function(error) {
         console.log("Error getting document:", error);
       });
+    });
   };
 
   changeHandler = event => {

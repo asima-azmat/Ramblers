@@ -8,27 +8,35 @@ class CreateUser extends Component {
     super(props);
     this.state = {
       user: false,
-      userid: firebase.auth().currentUser.uid,
+      userid: "",
+      // userid: firebase.auth().currentUser.uid,
       firstName: "",
       lastName: "",
-      email: firebase.auth().currentUser.email,
+      email: "",
+      // email: firebase.auth().currentUser.email,
       skills: [],
       team: "",
       company: ""
     };
   }
-  componentDidMount = () => {
+  componentDidMount() {
+    let that = this;
+
+    firebase.auth().onAuthStateChanged(function(currentUser){
+      that.setState({ userid: currentUser.uid, email: currentUser.email });
+      
+
     var doc = firebase
       .firestore()
       .collection("User")
-      .doc(this.state.userid);
+      .doc(currentUser.uid);
 
     doc
       .get()
       .then(doc => {
         if ((doc.data().firstName = !"")) {
           console.log(doc.data());
-          this.setState({
+          that.setState({
             user: true
           });
         }
@@ -36,6 +44,7 @@ class CreateUser extends Component {
       .catch(function(error) {
         console.log("Error getting document:", error);
       });
+    });
   };
 
   changeHandler = event => {
@@ -78,7 +87,7 @@ class CreateUser extends Component {
   render() {
     return (
       <div id="login-box">
-      <div class="left-box">
+      <div className="left-box">
           {/* <p>Here goes the picture</p>         */}
         </div>
 
@@ -121,7 +130,7 @@ class CreateUser extends Component {
               <input type="submit"></input>
               <input type="button" value="Cancel"></input>
 
-              <button classname="clickable" onClick={() => firebase.auth().signOut()}>Cancel</button>
+              <button className="clickable" onClick={() => firebase.auth().signOut()}>Cancel</button>
             </form>
 
             
