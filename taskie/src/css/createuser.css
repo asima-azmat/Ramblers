@@ -1,10 +1,6 @@
 .some-page-wrapper {
-    margin: 15px;
-    background-color: none;
+    background-color: white;
     justify-content: center;
-    padding-top: 9%;
-    padding-right: 20%;
-    padding-left: 20%;
 }
   
 .row {
@@ -25,6 +21,7 @@
     margin: 0px;
     position: relative;
     color: black;
+    min-height: 100vh;
 }
   
 .left-column {
@@ -35,7 +32,10 @@
     height: 100%;
     width: 100%; 
     box-sizing: border-box;
-    border: 5px solid red;
+    /* border: 5px solid red; */
+
+    display: flex;
+    justify-content: center;
 
 }
   
@@ -44,7 +44,7 @@
     height: 100%;
     width: 100%;
     box-sizing: border-box;
-    border: 5px solid green;
+    /* border: 5px solid green; */
 
 }
 /* ================================================================================ */
@@ -211,17 +211,15 @@ li {
 }
 
 .text-block {
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
     background-color: white;
     color: black;
-    padding-left: 20px;
-    padding-right: 20px;
     text-align: center;
-    margin-bottom: 100px;
     border-radius: 10px;
-    padding-left: 10px;
+    max-height: 200px;
+    padding: 21px;
+    justify-self: center;
+    align-self: center;
+    max-width: 600px;
 }
 
 
