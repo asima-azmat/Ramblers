@@ -5,6 +5,8 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link } from "react-router-dom";
+import HelpTaskForm from "../screens/HelpTaskForm";
+import AcceptTaskForm from "../screens/AcceptTaskForm";
 
 const useStyles = makeStyles({
   card: {
@@ -40,37 +42,134 @@ function Task(props) {
       setTask(taskArray);
    });
    }, []);
-
-  return (
-    <div className="task-card">
-      {
-        task.map((taskObject, index) => {
-          return(
-            <div key = {`${index}`} className="task-card">
-              <br></br>
-              <Card className={classes.card}>
-              <Link to={`/HelpTaskForm/${taskObject.taskid}`}>
-                <CardContent>
-                  <Typography variant="h5" component="h2">
-                    {taskObject.taskTitle}
-                  </Typography>
-                  <Typography className={classes.title} color="textSecondary" gutterBottom>
-                    Created By: {taskObject.createdBy}
-                  </Typography>
-                  <Typography color="textSecondary">
-                    Deadline: {taskObject.deadline}
-                  </Typography>
-                  <Typography variant="body2" component="p">
-                  </Typography>
-                </CardContent>
-                </Link>
-            </Card>
-            </div>
-          );
-        })
-      }
-    </div>
-  );
-
+  console.log(props.taskStatus)
+  switch(props.taskStatus){
+    case 'Help':
+      return (
+        <div className="task-card">
+          {
+            task.map((taskObject, index) => {
+              return(
+                <div key = {`${index}`} className="task-card">
+                  <br></br>
+                  <Card className={classes.card}>
+                  <Link to={`/HelpTaskForm/${taskObject.taskid}`}>
+                    <CardContent>
+                      <Typography variant="h5" component="h2">
+                        {taskObject.taskTitle}
+                      </Typography>
+                      <Typography className={classes.title} color="textSecondary" gutterBottom>
+                        Created By: {taskObject.createdBy}
+                      </Typography>
+                      <Typography color="textSecondary">
+                        Deadline: {taskObject.deadline}
+                      </Typography>
+                      <Typography variant="body2" component="p">
+                      </Typography>
+                    </CardContent>
+                    </Link>
+                </Card>
+                </div>
+              );
+            })
+          }
+        </div>
+      );
+    case 'Accepted':
+      return (
+        <div className="task-card">
+          {
+            task.map((taskObject, index) => {
+              return(
+                <div key = {`${index}`} className="task-card">
+                  <br></br>
+                  <Card className={classes.card}>
+                  <Link to={`/AcceptTaskForm/${taskObject.taskid}`}>
+                    <CardContent>
+                      <Typography variant="h5" component="h2">
+                        {taskObject.taskTitle}
+                      </Typography>
+                      <Typography className={classes.title} color="textSecondary" gutterBottom>
+                        Created By: {taskObject.createdBy}
+                      </Typography>
+                      <Typography color="textSecondary">
+                        Deadline: {taskObject.deadline}
+                      </Typography>
+                      <Typography variant="body2" component="p">
+                      </Typography>
+                    </CardContent>
+                    </Link>
+                </Card>
+                </div>
+              );
+            })
+          }
+        </div>
+      );
+      case 'Review':
+      return (
+        <div className="task-card">
+          {
+            task.map((taskObject, index) => {
+              return(
+                <div key = {`${index}`} className="task-card">
+                  <br></br>
+                  <Card className={classes.card}>
+                  <Link to={`/ReviewTaskForm/${taskObject.taskid}`}>
+                    <CardContent>
+                      <Typography variant="h5" component="h2">
+                        {taskObject.taskTitle}
+                      </Typography>
+                      <Typography className={classes.title} color="textSecondary" gutterBottom>
+                        Created By: {taskObject.createdBy}
+                      </Typography>
+                      <Typography color="textSecondary">
+                        Deadline: {taskObject.deadline}
+                      </Typography>
+                      <Typography variant="body2" component="p">
+                      </Typography>
+                    </CardContent>
+                    </Link>
+                </Card>
+                </div>
+              );
+            })
+          }
+        </div>
+      );
+      case 'Done':
+      return (
+        <div className="task-card">
+          {
+            task.map((taskObject, index) => {
+              return(
+                <div key = {`${index}`} className="task-card">
+                  <br></br>
+                  <Card className={classes.card}>
+                  <Link to={`/DoneTaskForm/${taskObject.taskid}`}>
+                    <CardContent>
+                      <Typography variant="h5" component="h2">
+                        {taskObject.taskTitle}
+                      </Typography>
+                      <Typography className={classes.title} color="textSecondary" gutterBottom>
+                        Created By: {taskObject.createdBy}
+                      </Typography>
+                      <Typography color="textSecondary">
+                        Deadline: {taskObject.deadline}
+                      </Typography>
+                      <Typography variant="body2" component="p">
+                      </Typography>
+                    </CardContent>
+                    </Link>
+                </Card>
+                </div>
+              );
+            })
+          }
+        </div>
+      );
+    default:
+      return null;
+  }
 }
 export default Task;

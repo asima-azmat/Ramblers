@@ -14,13 +14,13 @@ function HelpTaskForm (props) {
     })
    }, []);
 
-   const acceptHandler = event => {
+   const reviewHandler = event => {
     event.preventDefault();
-    firebase.firestore().collection('Task').doc(id).update({taskStatus: "Accepted"});
+    firebase.firestore().collection('Task').doc(id).update({taskStatus: "Review"});
     props.history.push("/Home");
    };
 
-   const rejectHandler = event => {
+   const cancelHandler = event => {
     event.preventDefault();
     props.history.push("/Home");
    };
@@ -53,27 +53,36 @@ function HelpTaskForm (props) {
         <br></br>
         <label>Link</label>
           <br></br>
-          <input disabled type="text" name="taskLink" value={task.taskLink} />
+          <input type="text" name="taskLink" value={task.taskLink} />
           <br></br>
         <p>
           Created by
           <br></br>
           {task.createdBy}
         </p>
+        <label>Solution</label>
+        <br></br>
+        <textarea name="solution"/>
+        <br></br>
+        <label>Solution Link</label>
+          <br></br>
+          <input type="text" name="solutionLink"/>
+          <br></br>
+          <br></br>
         <Link to="/Home">
         <input
-          name="accept"
+          name="review"
           type="submit"
-          value="Accept"
-          onClick= {acceptHandler}
+          value="Send to Review"
+          onClick= {reviewHandler}
         ></input>
         </Link>
         <Link to="/Home">
         <input
-          name="reject"
+          name="cancel"
           type="submit"
-          value="Reject"
-          onClick= {rejectHandler}
+          value="Cancel"
+          onClick= {cancelHandler}
         ></input>
         </Link>
       </form>

@@ -12,6 +12,7 @@ import addicon from "../assets/addicon.png";
 import { Link, BrowserRouter } from "react-router-dom";
 import Task from "../components/Task";
 import HelpTaskForm from "./HelpTaskForm";
+import AcceptTaskForm from "./AcceptTaskForm";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -24,9 +25,6 @@ class Dashboard extends Component {
       <div className="app">
         <Navbar></Navbar>
         <div className="screen">
-        {/* <div className="bar">
-          <SideBar></SideBar>
-        </div> */}
           <div className="dashboard">
             <div className="column">
               <div className="help-title">
@@ -44,7 +42,7 @@ class Dashboard extends Component {
                 </Link>
               </div>
                 <Task taskStatus="Help"></Task>
-            </div>
+              </div>
             <div className="column">
               <div className="accepted-title">
                 <Typography component="h1" variant="h6" color="inherit" noWrap>

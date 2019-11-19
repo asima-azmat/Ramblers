@@ -16,7 +16,7 @@ function HelpTaskForm (props) {
 
    const acceptHandler = event => {
     event.preventDefault();
-    firebase.firestore().collection('Task').doc(id).update({taskStatus: "Accepted"});
+    firebase.firestore().collection('Task').doc(id).update({taskStatus: "Done"});
     props.history.push("/Home");
    };
 
@@ -53,7 +53,7 @@ function HelpTaskForm (props) {
         <br></br>
         <label>Link</label>
           <br></br>
-          <input disabled type="text" name="taskLink" value={task.taskLink} />
+          <input type="text" name="taskLink" value={task.taskLink} />
           <br></br>
         <p>
           Created by
