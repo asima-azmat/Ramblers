@@ -28,8 +28,8 @@ function Task(props) {
   const {taskStatus} = props;
   const taskArray = [];
   const [task,setTask] = useState([]);
-
-   useEffect(() => {
+  
+   useEffect(() => {  
     firebase.firestore().collection('Task')
     .where("taskStatus", "==", props.taskStatus)
     //.orderBy("deadline")
