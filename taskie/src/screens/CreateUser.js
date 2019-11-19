@@ -3,17 +3,17 @@ import firebase, { db } from "firebase";
 import { withRouter } from "react-router-dom";
 import "../css/createuser.css";
 
+document.body.style.backgroundColor = "#e5e5e5";
+
 class CreateUser extends Component {
   constructor(props) {
     super(props);
     this.state = {
       user: false,
       userid: "",
-      // userid: firebase.auth().currentUser.uid,
       firstName: "",
       lastName: "",
       email: "",
-      // email: firebase.auth().currentUser.email,
       skills: [],
       team: "",
       company: ""
@@ -84,63 +84,73 @@ class CreateUser extends Component {
         console.error("Error adding document: ", error);
       });
   };
+
+
   render() {
     return (
-      <div id="login-box">
-      <div className="left-box">
-          {/* <p>Here goes the picture</p>         */}
+      <div className="some-page-wrapper">
+      <div className="row">
+      {/* <div id="login-box"> */}
+
+        <div className="column">
+          <div className="left-column">
+            {/* <h1>Here goes the picture</h1> */}
+            <div className="text-block">
+              <h3>Make time the real new value <br></br>for your team.</h3>
+              <h5>Every time you help your team mates on solving a task (each less than 30 minutes of processing time) you will get 15 minutes of personal free time in return.</h5>  </div>
+          </div>        
         </div>
+        {/* {this.state.user ? ( */}
+        <div className="column">
+          
+            <div className="create-user">
+              <div className="right-column">
+              <form onSubmit={this.submitHandler}>
+                <h2>Complete Your Profile</h2>
+                <label>First name: </label>
+                <input
+                  type="text"
+                  name="firstName"
+                  placeholder="Erika"
+                  onChange={this.changeHandler}
+                />
+                <br />
+                <label>Last name: </label>
+                <input
+                  type="text"
+                  name="lastName"
+                  placeholder="Mustermann"
+                  onChange={this.changeHandler}
+                />
+                <br />
+                <label>email:</label>
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="e.mustermann@gmail.com"
+                  onChange={this.changeHandler}
+                  disabled
+                />
+                <br />
+                <label>Team:</label>
+                <input type="text" name="team" placeholder="Ramblers" onChange={this.changeHandler} />
+                <br />
+                <label>company:</label>
+                <input type="text" name="company" placeholder="DPS" onChange={this.changeHandler} />
+                <br />
+                <ul className="row">
+                  <li><input type="submit" value="SAVE"></input></li>
+                  <li><input type="button" value="CANCEL" onClick={() => firebase.auth().signOut()}></input></li>
+                </ul>
+              </form>
 
-      <div className="right-box">
-        {this.state.user ? (
-          <div className="create-user">
-            <form onSubmit={this.submitHandler}>
-              <h1>Complete Your Profile</h1>
-              <label>First name: </label>
-              <input
-                type="text"
-                name="firstName"
-                placeholder="Erika"
-                onChange={this.changeHandler}
-              />
-              <br />
-              <label>Last name: </label>
-              <input
-                type="text"
-                name="lastName"
-                placeholder="Mustermann"
-                onChange={this.changeHandler}
-              />
-              <br />
-              <label>email:</label>
-              <input
-                type="text"
-                name="email"
-                placeholder="e.mustermann@gmail.com"
-                onChange={this.changeHandler}
-                disabled
-              />
-              <br />
-              <label>Team:</label>
-              <input type="text" name="team" placeholder="Ramblers" onChange={this.changeHandler} />
-              <br />
-              <label>company:</label>
-              <input type="text" name="company" placeholder="DPS" onChange={this.changeHandler} />
-              <br />
-              <input type="submit"></input>
-              <input type="button" value="Cancel"></input>
-
-              <button className="clickable" onClick={() => firebase.auth().signOut()}>Cancel</button>
-            </form>
-
-            
-          </div>
-        ) : (
-          "hi"
-        )}{" "}
+              </div>
+            </div>
+          
+        </div>
+        {/* ) : ( "hi" )}{" "} */}
       </div>
-      </div>
-
+    </div>
     );
   }
 }
