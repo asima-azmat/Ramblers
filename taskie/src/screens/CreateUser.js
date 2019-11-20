@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import firebase, { db } from "firebase";
+import firebase from "firebase";
 import { withRouter } from "react-router-dom";
 import "../css/createuser.css";
 
