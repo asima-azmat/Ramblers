@@ -2,14 +2,15 @@ import React, { Component } from "react";
 import firebase, { db } from "../firebase.js";
 import * as firebaseui from "firebaseui";
 import "firebaseui/dist/firebaseui.css";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Grid from "@material-ui/core/Grid";
-import CreateUser from "./CreateUser.js";
-import Dashboard from "./Dashboard.js";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Redirect } from "react-router-dom";
-import TaskForm from "./TaskForm.js";
 import "../css/signup.css";
+// import CssBaseline from "@material-ui/core/CssBaseline";
+// import Grid from "@material-ui/core/Grid";
+// import CreateUser from "./CreateUser.js";
+// import Dashboard from "./Dashboard.js";
+// import { BrowserRouter as Router, Route } from "react-router-dom";
+// import TaskForm from "./TaskForm.js";
+// import welcomeImage from '../assets/welcome.png';
 
 class Signup extends Component {
   state = { isSignedIn: false };
@@ -59,9 +60,14 @@ class Signup extends Component {
 
             <div className="column">
               <div className="left-column">
-                <div className="text-block">
-                  <h3>Make time the real new value <br></br>for your team.</h3>
-                  <h5>Every time you help your team mates on solving a task (each less than 30 minutes of processing time) you will get 15 minutes of personal free time in return.</h5>  
+                <div className="welcome-to">
+                  Welcome To <br />
+                  <div className="taskie-title">
+                    <img src={require('../assets/Taskie.png')} alt="Welcome!"/>
+                  </div>
+                </div>
+                <div className="welcome-image">
+                  <img src={require('../assets/welcome.png')} alt="Welcome!"/>
                 </div>        
               </div>
             </div>
@@ -71,8 +77,7 @@ class Signup extends Component {
                 <div>
                   <h1>Discover Taskie</h1>
                   <h5 className="subtitle">
-                    your new solution to get urgent or unexpected tasks done: solved in time & within your team..<br /> Get help when you are needed.
-                    <br />
+                    your new solution to get urgent or unexpected tasks done:<br />solved in time & within your team..<br /> Get help when you are needed. <br />
                     By just login with your company email
                   </h5>
                   <div id="firebaseui-auth-container"></div>
@@ -88,3 +93,4 @@ class Signup extends Component {
   }
 }
 export default Signup;
+
