@@ -20,6 +20,23 @@
   .column {
     width: 100%;
   }
+  .bar {
+    width: 100%;
+  }
+}
+.dashboard {
+  width: 85%;
+  height: 100%;
+  display: block;
+  height: 100%;
+}
+.screen {
+  display: flex;
+}
+.bar {
+  width: 15%;
+  display: block;
+  border-right: 1px solid white;
 }
 .done-title {
   background-color: #48a690;
@@ -40,18 +57,4 @@
 
 title {
   flex-grow: 1;
-}
-.dashboard button {
-  background-color: #f98f56;
-  height: 92px;
-  width: 80%;
-  border-radius: 25px;
-}
-.dashboard img {
-  width: 150;
-  height: 20;
-}
-
-.dashboard {
-  background-color: lavender;
 }
