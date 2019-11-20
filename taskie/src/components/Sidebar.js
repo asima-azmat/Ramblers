@@ -8,10 +8,16 @@ import Badge from "@material-ui/core/Badge";
 class SideBar extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      userImage: ""
+    };
   }
-  componentDidMount = () => {};
-  userImage = `${firebase.auth().currentUser.photoURL}`;
+  componentDidMount = () => {
+    let that = this;
+    firebase.auth().onAuthStateChanged(function(currentUser){
+      that.setState({ userImage: currentUser.photoURL});
+    }) 
+  };
 
   render() {
     return (
