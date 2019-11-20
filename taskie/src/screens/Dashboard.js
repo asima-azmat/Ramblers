@@ -18,11 +18,15 @@ class Dashboard extends Component {
     this.state = {};
   }
   componentDidMount = () => {};
+  
   render() {
     return (
       <div className="app">
         <Navbar></Navbar>
         <div className="screen">
+          <div className="bar">
+            <SideBar></SideBar>
+          </div>
           <div className="dashboard">
             <div className="column">
               <div className="help-title">

@@ -1,5 +1,38 @@
 @import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 
+.side-bar {
+  background-color: #323a40;
+  flex-direction: column;
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 15%;
+}
+.elements-tasks {
+  align-content: center;
+  color: white;
+  display: flex;
+  border: 0.1 solid white;
+  padding-right: 2%;
+}
+.elements-tasks h5 {
+  margin: auto;
+}
+.users {
+  justify-content: flex-start;
+  color: white;
+  flex-grow: 1;
+  margin-top: 100%;
+}
+.teammember {
+  display: flex;
+  padding-top: 2%;
+}
+.teammember h6 {
+  margin-left: 0.5cm;
+  margin: auto;
+}
+
 .nav-bar {
   background-color: #323a40;
   display: flex;
@@ -11,13 +44,33 @@
 }
 
 .title {
-  width: 55%;
+  width: 50%;
   color: white;
   font-family: "Open Sans", sans-serif;
+  margin: auto;
+  align-items: center;
 }
 
 .user {
-  width: 25%;
-  color: black;
+  width: 30%;
+  color: white;
   font-family: "Open Sans", sans-serif;
+  display: flex;
+}
+
+.user h5 {
+  margin-top: 2px;
+  margin-right: 21px;
+}
+.name-img {
+  padding: 2%;
+  align-content: flex-end;
+  display: flex;
+  width: 100%;
+  margin-left: 30%;
+  align-items: center;
+}
+
+.elements-tasks img {
+  margin: 5%;
 }

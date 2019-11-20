@@ -35,7 +35,7 @@ class CreateUser extends Component {
       .get()
       .then(doc => {
         if ((doc.data().firstName = !"")) {
-          this.setState({
+          that.setState({
             user: true
           });
         }
@@ -99,7 +99,7 @@ class CreateUser extends Component {
         {/* {this.state.user ? ( */}
         <div className="column">
           
-            <div className="create-user">
+            {/* <div className="create-user"> */}
               <div className="right-column">
               <form onSubmit={this.submitHandler}>
                 <h2>Complete Your Profile</h2>
@@ -141,7 +141,7 @@ class CreateUser extends Component {
               </form>
 
               </div>
-            </div>
+            {/* </div> */}
           
         </div>
         {/* ) : ( "hi" )}{" "} */}
