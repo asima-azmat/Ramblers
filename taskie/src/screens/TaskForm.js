@@ -13,7 +13,6 @@ class TaskForm extends Component {
       deadline: "",
       estimatedTime: "",
       userid: "",
-      // userid: firebase.auth().currentUser.uid,
       team: "",
       company: "",
       createdBy: "",

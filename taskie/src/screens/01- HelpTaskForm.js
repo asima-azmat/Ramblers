@@ -7,6 +7,7 @@ function HelpTaskForm (props) {
   
   let { id } = useParams();
   const [task,setTask] = useState([]);
+
    useEffect(() => {
     const taskData = firebase.firestore().collection('Task').doc(id)
     taskData.get().then(function(doc) {
@@ -14,13 +15,15 @@ function HelpTaskForm (props) {
     })
    }, []);
 
-   const reviewHandler = event => {
+   console.log(firebase.auth().currentUser.uid);
+
+   const acceptHandler = event => {
     event.preventDefault();
-    firebase.firestore().collection('Task').doc(id).update({taskStatus: "Review"});
+    firebase.firestore().collection('Task').doc(id).update({taskStatus: "Accepted", acceptedBy: firebase.auth().currentUser.uid});
     props.history.push("/Home");
    };
 
-   const cancelHandler = event => {
+   const rejectHandler = event => {
     event.preventDefault();
     props.history.push("/Home");
    };
@@ -53,36 +56,27 @@ function HelpTaskForm (props) {
         <br></br>
         <label>Link</label>
           <br></br>
-          <input type="text" name="taskLink" value={task.taskLink} />
+          <input disabled type="text" name="taskLink" value={task.taskLink} />
           <br></br>
         <p>
           Created by
           <br></br>
           {task.createdBy}
         </p>
-        <label>Solution</label>
-        <br></br>
-        <textarea name="solution"/>
-        <br></br>
-        <label>Solution Link</label>
-          <br></br>
-          <input type="text" name="solutionLink"/>
-          <br></br>
-          <br></br>
         <Link to="/Home">
         <input
-          name="review"
+          name="accept"
           type="submit"
-          value="Send to Review"
-          onClick= {reviewHandler}
+          value="Accept"
+          onClick= {acceptHandler}
         ></input>
         </Link>
         <Link to="/Home">
         <input
-          name="cancel"
+          name="reject"
           type="submit"
-          value="Cancel"
-          onClick= {cancelHandler}
+          value="Reject"
+          onClick= {rejectHandler}
         ></input>
         </Link>
       </form>

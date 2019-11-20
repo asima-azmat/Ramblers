@@ -4,10 +4,10 @@ import "firebaseui/dist/firebaseui.css";
 import Signup from "./screens/Signup.js";
 import Dashboard from "./screens/Dashboard.js";
 import TaskForm from "./screens/TaskForm.js";
-import HelpTaskForm from "./screens/HelpTaskForm.js";
-import AcceptTaskForm from "./screens/AcceptTaskForm.js";
-import ReviewTaskForm from "./screens/ReviewTaskForm.js";
-import DoneTaskForm from "./screens/DoneTaskForm.js";
+import HelpTaskForm from "./screens/01- HelpTaskForm.js";
+import AcceptTaskForm from "./screens/02- AcceptTaskForm.js";
+import ReviewTaskForm from "./screens/03- ReviewTaskForm.js";
+import DoneTaskForm from "./screens/04- DoneTaskForm.js";
 import { BrowserRouter as BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import CreateUser from "./screens/CreateUser.js";
 
