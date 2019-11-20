@@ -54,7 +54,7 @@ class Signup extends Component {
     } 
     else {
       return (
-        <div className="some-page-wrapper">
+        <div className="page-wrapper">
 
           <div className="row"> 
 

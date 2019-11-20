@@ -1,4 +1,4 @@
-.some-page-wrapper {
+.page-wrapper {
     background-color: white;
     justify-content: center;
 }
@@ -80,14 +80,6 @@ h1, h2 {
 }
 
 
-/* h5 {
-    text-align: center;
-    margin-right: 10%;
-    margin-left: 10%;
-    margin-bottom: 10%;
-    margin-top: 20%;
-} */
-
 input[type=text] {
     position: relative;
     border-radius: 5px;
@@ -115,7 +107,6 @@ input[type=submit] {
 
 button {
     display: inline-block;
-    /* padding: 15px 25px; */
     font-size: 24px;
     cursor: pointer;
     text-align: center;
@@ -129,35 +120,6 @@ button {
   
 
 
-
-/* .flex-container { 
-    display: flex;
-    justify-content: center;
-    background-color: DodgerBlue;
-    flex-direction: row;
-
-    position: relative;
-    margin: 5% auto;
-    height: 800px;
-    width: 1200px;
-    /* background: #fff; */
-    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
-
-  } */
-/*   
-.box {
-    position: absolute;
-    float: left;
-    top: 0;
-    left: 0;
-    box-sizing: border-box;
-    padding: 40px;
-    width: 50%;
-    height: 50%;    
-    border-color: red;
-    border-style: solid;
-  } */
-  
 #login-box {
     position: relative;
     margin: 5% auto;
@@ -194,12 +156,6 @@ button {
     text-align: center;
 }
 
-/* .row:after {
-    content: "";
-    display: table;
-    clear: both;
-} */
-
 ul {
     list-style-type:none;
     padding-top: 10%;
@@ -222,5 +178,3 @@ li {
     max-width: 600px;
 }
 
-
-/* Something's wrong with the form and its children elements, otherwise the sizes would be maintained. */

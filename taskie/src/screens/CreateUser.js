@@ -84,7 +84,7 @@ class CreateUser extends Component {
 
   render() {
     return (
-      <div className="some-page-wrapper">
+      <div className="page-wrapper">
       <div className="row">
       {/* <div id="login-box"> */}
 
