@@ -19,7 +19,8 @@ class TaskForm extends Component {
       createdBy: "",
       assignedTo: "",
       taskStatus: "",
-      taskLink: ""
+      taskLink: "",
+      tobeNotified: []
     };
   }
 
@@ -37,10 +38,8 @@ class TaskForm extends Component {
       doc
         .get()
         .then(doc => {
-          that.setState({
-            company: doc.data().company,
-            team: doc.data().team,
-            createdBy: currentUser.uid,
+          this.setState({
+            createdBy: this.state.userid,
             taskStatus: "Help"
           });
         })
@@ -56,6 +55,7 @@ class TaskForm extends Component {
 
   submitHandler = event => {
     event.preventDefault();
+    const tobeNotified = this.state.tobeNotified.concat(this.state.userid);
     const {
       taskTitle,
       description,
@@ -69,6 +69,7 @@ class TaskForm extends Component {
       taskStatus,
       taskLink
     } = this.state;
+
     firebase
       .firestore()
       .collection("Task")
@@ -83,7 +84,8 @@ class TaskForm extends Component {
         createdBy,
         assignedTo,
         taskStatus,
-        taskLink
+        taskLink,
+        tobeNotified
       })
       .then(docRef => {
         this.setState({
@@ -97,7 +99,8 @@ class TaskForm extends Component {
           createdBy: "",
           assignedTo: "",
           taskStatus: "",
-          taskLink: ""
+          taskLink: "",
+          tobeNotified: []
         });
         this.props.history.push("/Home");
       })
