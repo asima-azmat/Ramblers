@@ -11,44 +11,64 @@ import { Link, BrowserRouter } from "react-router-dom";
 import Task from "../components/Task";
 import ControlledPopup from "../components/ControlledPopup";
 
+function createTask(id, data) {
+  return { ...data, taskid: id };
+}
+
+function getExcept(collectionname, property, filter) {
+  return firebase
+    .firestore()
+    .collection(collectionname)
+    .get()
+    .then(function(querySnapshot) {
+      var queryresult = [];
+      querySnapshot.docs.forEach(function(doc) {
+        if (doc.data()[property]) {
+          doc.data()[property].forEach(function(element) {
+            if (element !== filter) {
+              const newTask = createTask(doc.id, doc.data());
+
+              queryresult.push(newTask);
+            }
+          });
+        }
+      });
+      return queryresult;
+    });
+}
+function addUser(taskId) {
+  let task_not = firebase
+    .firestore()
+    .collection("Task")
+    .doc(taskId);
+
+  var arrUnion = task_not.update({
+    tobeNotified: firebase.firestore.FieldValue.arrayUnion(
+      firebase.firestore.auth().currentUser.uid
+    )
+  });
+  console.log("added");
+}
+
 class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
       userid: firebase.auth().currentUser.uid,
       notification: false,
-      listenToSnapshot: false
+      name: "",
+      taskId: null
     };
   }
   componentDidMount = () => {
-    var doc = firebase
-      .firestore()
-      .collection("User")
-      .doc(this.state.userid);
-
-    doc
-      .get()
-      .then(doc => {
-        let that = this;
-        if (this.state.listenToSnapshot) {
-          firebase
-            .firestore()
-            .collection("Task")
-            .where("company", "==", doc.data().company)
-            .where("team", "==", doc.data().team)
-            .onSnapshot(function(snapshot) {
-              snapshot.docChanges().forEach(function(change) {
-                if (change.type === "added") {
-                  console.log("New task: ", change.doc.data());
-                  that.setState({ notification: true });
-                }
-              });
-            });
-        }
-      })
-      .catch(function(error) {
-        console.log("Error getting document:", error);
-      });
+    let that = this;
+    getExcept("Task", "readBy", this.state.userid).then(function(value) {
+      if (!value) {
+        console.log(value[0].readBy);
+        that.setState({ notification: true });
+        addUser(value[0].taskid);
+      }
+    });
   };
 
   render() {
