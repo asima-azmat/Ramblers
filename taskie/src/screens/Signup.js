@@ -2,13 +2,15 @@ import React, { Component } from "react";
 import firebase from "../firebase.js";
 import * as firebaseui from "firebaseui";
 import "firebaseui/dist/firebaseui.css";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Grid from "@material-ui/core/Grid";
-import CreateUser from "./CreateUser.js";
-import Dashboard from "./Dashboard.js";
-//import { BrowserRouter as Router, Route } from "react-router-dom";
 import { Redirect } from "react-router-dom";
-import TaskForm from "./TaskForm.js";
+import "../css/signup.css";
+// import CssBaseline from "@material-ui/core/CssBaseline";
+// import Grid from "@material-ui/core/Grid";
+// import CreateUser from "./CreateUser.js";
+// import Dashboard from "./Dashboard.js";
+// import { BrowserRouter as Router, Route } from "react-router-dom";
+// import TaskForm from "./TaskForm.js";
+// import welcomeImage from '../assets/welcome.png';
 
 class Signup extends Component {
   state = { isSignedIn: false };
@@ -52,36 +54,43 @@ class Signup extends Component {
     } 
     else {
       return (
-        <div className="right-box">
-          {/* <Grid container component="main" className="root">
-            <CssBaseline />
-            <Grid item m={12} sm={6}> */}
-              <h1>Taskie</h1>
-            {/* </Grid>
-            <Grid
-              item
-              m={20}
-              sm={6}
-              elevation={6}
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center"
-              }}
-            > */}
-              <h5>
-                It’s a platform for your team to create, assign, follow up
-                tasks.
-                <br /> Get help when you are needed.
-                <br />
-                By just login with your company email
-              </h5>
-              <div id="firebaseui-auth-container"></div>
-            {/* </Grid>
-          </Grid> */}
+        <div className="page-wrapper">
+
+          <div className="row"> 
+
+            <div className="column">
+              <div className="left-column">
+                <div className="welcome-to">
+                  Welcome To <br />
+                  <div className="taskie-title">
+                    <img src={require('../assets/Taskie.png')} alt="Welcome!"/>
+                  </div>
+                </div>
+                <div className="welcome-image">
+                  <img src={require('../assets/welcome.png')} alt="Welcome!"/>
+                </div>        
+              </div>
+            </div>
+
+            <div className="column">
+              <div className="right-column">
+                <div>
+                  <h1>Discover Taskie</h1>
+                  <h5 className="subtitle">
+                    your new solution to get urgent or unexpected tasks done:<br />solved in time & within your team..<br /> Get help when you are needed. <br />
+                    By just login with your company email
+                  </h5>
+                  <div id="firebaseui-auth-container"></div>
+                </div> 
+              </div>
+            </div>
+
+          </div>
+                
         </div>
       );
     }
   }
 }
 export default Signup;
+

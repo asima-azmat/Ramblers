@@ -23,16 +23,14 @@
     color: black;
     min-height: 100vh;
 }
-  
+
 .left-column {
-    /* background-color: blue; */
-    background-image: url("../assets/background.jpg");
+    background-color: blue;
     background-size: cover;
 
     height: 100%;
     width: 100%; 
     box-sizing: border-box;
-    /* border: 5px solid red; */
 
     display: flex;
     justify-content: center;
@@ -44,18 +42,14 @@
     height: 100%;
     width: 100%;
     box-sizing: border-box;
-    /* border: 5px solid green; */
-
 }
+
 /* ================================================================================ */
 /* ================================================================================ */
 /* ================================================================================ */
 /* ================================================================================ */
 
-/* form {
-    position: relative;
-    background-color: #F3E6E4; 
-}*/
+
 
 label {
     display: inline-block;
@@ -73,6 +67,13 @@ label {
     display:inline-block;
 }
 h1, h2 {
+    padding-top: 6%;
+    padding-bottom: 4%;
+    font-size: large;
+    text-align: center;
+}
+
+.subtitle {
     padding-top: 6%;
     padding-bottom: 4%;
     font-size: large;
@@ -119,7 +120,6 @@ button {
   }
   
 
-
 #login-box {
     position: relative;
     margin: 5% auto;
@@ -156,6 +156,7 @@ button {
     text-align: center;
 }
 
+
 ul {
     list-style-type:none;
     padding-top: 10%;
@@ -178,3 +179,28 @@ li {
     max-width: 600px;
 }
 
+.welcome-image {
+    color: black;
+    text-align: center;
+    border-radius: 10px;
+    max-height: 200px;
+    padding: 21px;
+    justify-self: center;
+    align-self: center;
+    max-width: 600px;
+}
+
+.welcome-to {
+    text-align: center;
+    color: black;
+    font-size: 3em;
+    font-weight: bold;
+    position: absolute;
+    padding-top: 90px;
+}
+
+.taskie-title {
+    display: flex;
+    justify-content: center;
+    margin-top: 5vh;
+}

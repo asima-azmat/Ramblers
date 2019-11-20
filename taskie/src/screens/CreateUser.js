@@ -84,7 +84,7 @@ class CreateUser extends Component {
 
   render() {
     return (
-      <div className="some-page-wrapper">
+      <div className="page-wrapper">
       <div className="row">
       {/* <div id="login-box"> */}
 
@@ -103,7 +103,7 @@ class CreateUser extends Component {
               <div className="right-column">
               <form onSubmit={this.submitHandler}>
                 <h2>Complete Your Profile</h2>
-                <label>First name: </label>
+                <label>FIRST NAME </label>
                 <input
                   type="text"
                   name="firstName"
@@ -111,7 +111,7 @@ class CreateUser extends Component {
                   onChange={this.changeHandler}
                 />
                 <br />
-                <label>Last name: </label>
+                <label>LAST NAME</label>
                 <input
                   type="text"
                   name="lastName"
@@ -119,20 +119,19 @@ class CreateUser extends Component {
                   onChange={this.changeHandler}
                 />
                 <br />
-                <label>email:</label>
+                <label>COMPANY</label>
                 <input
                   type="text"
                   name="email"
-                  placeholder="e.mustermann@gmail.com"
+                  placeholder="Digital Product School"
                   onChange={this.changeHandler}
-                  disabled
                 />
                 <br />
-                <label>Team:</label>
-                <input type="text" name="team" placeholder="Ramblers" onChange={this.changeHandler} />
+                <label>YOUR ROLE</label>
+                <input type="text" name="team" placeholder="Software Engineer" onChange={this.changeHandler} />
                 <br />
-                <label>company:</label>
-                <input type="text" name="company" placeholder="DPS" onChange={this.changeHandler} />
+                <label>YOUR TEAM</label>
+                <input type="text" name="company" placeholder="The Ramblers" onChange={this.changeHandler} />
                 <br />
                 <ul className="row">
                   <li><input type="submit" value="SAVE"></input></li>
