@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import css from "../css/dashboard.css";
 import { red } from "@material-ui/core/colors";
 import Navbar from "../components/Navbar";
+import SideBar from "../components/Sidebar";
 import TaskForm from "./TaskForm";
 import CreateUser from "./CreateUser";
 import addicon from "../assets/addicon.png";
@@ -17,15 +18,15 @@ class Dashboard extends Component {
     this.state = {};
   }
   componentDidMount = () => {};
-
-  // redirect() {
-  //   return <CreateUser />;
-  // }
+  
   render() {
     return (
       <div className="app">
         <Navbar></Navbar>
         <div className="screen">
+          <div className="bar">
+            <SideBar></SideBar>
+          </div>
           <div className="dashboard">
             <div className="column">
               <div className="help-title">
