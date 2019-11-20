@@ -38,8 +38,8 @@ class TaskForm extends Component {
       doc
         .get()
         .then(doc => {
-          this.setState({
-            createdBy: this.state.userid,
+          that.setState({
+            createdBy: that.state.userid,
             taskStatus: "Help"
           });
         })
@@ -56,6 +56,7 @@ class TaskForm extends Component {
   submitHandler = event => {
     event.preventDefault();
     const tobeNotified = this.state.tobeNotified.concat(this.state.userid);
+
     const {
       taskTitle,
       description,
