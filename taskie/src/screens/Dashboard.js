@@ -11,6 +11,7 @@ import { Link, BrowserRouter } from "react-router-dom";
 import Task from "../components/Task";
 import ControlledPopup from "../components/ControlledPopup";
 
+var queryresult = [];
 function createTask(id, data) {
   return { ...data, taskid: id };
 }
@@ -21,31 +22,30 @@ function getExcept(collectionname, property, filter) {
     .collection(collectionname)
     .get()
     .then(function(querySnapshot) {
-      var queryresult = [];
       querySnapshot.docs.forEach(function(doc) {
         if (doc.data()[property]) {
           doc.data()[property].forEach(function(element) {
             if (element !== filter) {
               const newTask = createTask(doc.id, doc.data());
-
               queryresult.push(newTask);
             }
           });
         }
       });
-      return queryresult;
+      return true;
     });
 }
-function addUser(taskId) {
+function addUser(userid, taskId) {
   let task_not = firebase
     .firestore()
     .collection("Task")
     .doc(taskId);
+  console.log(task_not);
+
+  let tmp = firebase.firestore.FieldValue.arrayUnion(userid);
 
   var arrUnion = task_not.update({
-    tobeNotified: firebase.firestore.FieldValue.arrayUnion(
-      firebase.firestore.auth().currentUser.uid
-    )
+    tobeNotified: tmp
   });
   console.log("added");
 }
@@ -62,12 +62,10 @@ class Dashboard extends Component {
   }
   componentDidMount = () => {
     let that = this;
-    getExcept("Task", "readBy", this.state.userid).then(function(value) {
-      if (!value) {
-        console.log(value[0].readBy);
-        that.setState({ notification: true });
-        addUser(value[0].taskid);
-      }
+    getExcept("Task", "tobeNotified", this.state.userid).then(function(value) {
+      console.log(queryresult);
+      that.setState({ notification: true });
+      addUser(that.state.userid, queryresult[0].taskid);
     });
   };
 
