@@ -15,8 +15,6 @@ function HelpTaskForm (props) {
     })
    }, []);
 
-   console.log(firebase.auth().currentUser.uid);
-
    const acceptHandler = event => {
     event.preventDefault();
     firebase.firestore().collection('Task').doc(id).update({taskStatus: "Accepted", acceptedBy: firebase.auth().currentUser.uid});
