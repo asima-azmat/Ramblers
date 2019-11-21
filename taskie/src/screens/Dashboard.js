@@ -28,7 +28,6 @@ function getExcept(collectionname, property, filter) {
           if (!doc.data()[property].includes(filter)) {
             const newTask = createTask(doc.id, doc.data());
             queryresult.push(newTask);
-            console.log(newTask);
           }
         }
       });
@@ -45,7 +44,6 @@ function addUser(userid, taskId) {
   var arrUnion = task_not.update({
     tobeNotified: tmp
   });
-  console.log("added");
 }
 
 class Dashboard extends Component {
@@ -66,10 +64,8 @@ class Dashboard extends Component {
       getExcept("Task", "tobeNotified", that.state.userid).then(function(
         value
       ) {
-        console.log(queryresult.length);
         if (queryresult.length !== 0) {
           addUser(that.state.userid, queryresult[0].taskid);
-          console.log(queryresult);
           that.setState({ notification: true });
           queryresult = [];
         }
