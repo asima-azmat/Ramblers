@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import firebase from "firebase";
-// import css from "../css/taskform.css";
-// import { Link, BrowserRouter } from "react-router-dom";
+import css from "../css/taskform.css";
+//import { Link, BrowserRouter } from "react-router-dom";
 
 class TaskForm extends Component {
   constructor(props) {
@@ -13,12 +13,12 @@ class TaskForm extends Component {
       deadline: "",
       estimatedTime: "",
       userid: "",
-      // userid: firebase.auth().currentUser.uid,
       team: "",
       company: "",
       createdBy: "",
       assignedTo: "",
-      taskStatus: ""
+      taskStatus: "",
+      taskLink: ""
     };
   }
 
@@ -66,7 +66,8 @@ class TaskForm extends Component {
       team,
       createdBy,
       assignedTo,
-      taskStatus
+      taskStatus,
+      taskLink
     } = this.state;
     firebase
       .firestore()
@@ -81,7 +82,8 @@ class TaskForm extends Component {
         team,
         createdBy,
         assignedTo,
-        taskStatus
+        taskStatus,
+        taskLink
       })
       .then(docRef => {
         this.setState({
@@ -94,7 +96,8 @@ class TaskForm extends Component {
           team: "",
           createdBy: "",
           assignedTo: "",
-          taskStatus: ""
+          taskStatus: "",
+          taskLink: ""
         });
         console.log(this.props);
         this.props.history.push("/Home");
@@ -107,24 +110,19 @@ class TaskForm extends Component {
     return (
       <div className="task">
         <form onSubmit={this.submitHandler}>
-          <h1>Task form!</h1>
-          <label>Task title: </label>
+          <label>Task</label>
           <br></br>
           <input type="text" name="taskTitle" onChange={this.changeHandler} />
           <br></br>
-          <label>Task Description: </label>
+          <label>Description</label>
           <br></br>
           <input type="text" name="description" onChange={this.changeHandler} />
           <br></br>
-          <label>Related Role: </label>
+          <label>Related Role</label>
           <br></br>
           <input type="text" name="relatedRole" onChange={this.changeHandler} />
           <br></br>
-          <label>Deadline: </label>
-          <br></br>
-          <input type="text" name="deadline" onChange={this.changeHandler} />
-          <br></br>
-          <label>Estimated Time: </label>
+          <label>Deadline</label>
           <br></br>
           <input
             type="date"
@@ -132,10 +130,14 @@ class TaskForm extends Component {
             onChange={this.changeHandler}
           />
           <br></br>
-          {/* to be edited later.. 
-          we also need to add one field to the state */}
+          <input type="text" name="deadline" onChange={this.changeHandler} />
+          <br></br>
+          <label>Link</label>
+          <br></br>
+          <input type="text" name="taskLink" onChange={this.changeHandler} />
+          <br></br>
           <p>
-            Assigned by:
+            Created by
             <br></br>
             {this.state.userid}
           </p>

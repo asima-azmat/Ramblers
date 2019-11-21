@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import firebase, { db } from "../firebase.js";
+import firebase from "../firebase.js";
 import * as firebaseui from "firebaseui";
 import "firebaseui/dist/firebaseui.css";
 import { Redirect } from "react-router-dom";
