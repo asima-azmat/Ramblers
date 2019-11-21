@@ -40,7 +40,7 @@ function Task(props) {
       setTask(taskArray);
    });
    }, []);
-  console.log(props.taskStatus)
+   
   switch(props.taskStatus){
     case 'Help':
       return (
