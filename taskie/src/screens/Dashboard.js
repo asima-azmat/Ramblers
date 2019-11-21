@@ -12,6 +12,7 @@ import Task from "../components/Task";
 import ControlledPopup from "../components/ControlledPopup";
 
 var queryresult = [];
+var isNElement = true;
 function createTask(id, data) {
   return { ...data, taskid: id };
 }
@@ -24,12 +25,11 @@ function getExcept(collectionname, property, filter) {
     .then(function(querySnapshot) {
       querySnapshot.docs.forEach(function(doc) {
         if (doc.data()[property]) {
-          doc.data()[property].forEach(function(element) {
-            if (element !== filter) {
-              const newTask = createTask(doc.id, doc.data());
-              queryresult.push(newTask);
-            }
-          });
+          if (!doc.data()[property].includes(filter)) {
+            const newTask = createTask(doc.id, doc.data());
+            queryresult.push(newTask);
+            console.log(newTask);
+          }
         }
       });
       return true;
@@ -40,10 +40,8 @@ function addUser(userid, taskId) {
     .firestore()
     .collection("Task")
     .doc(taskId);
-  console.log(task_not);
 
   let tmp = firebase.firestore.FieldValue.arrayUnion(userid);
-
   var arrUnion = task_not.update({
     tobeNotified: tmp
   });
@@ -56,16 +54,20 @@ class Dashboard extends Component {
     this.state = {
       userid: firebase.auth().currentUser.uid,
       notification: false,
-      name: "",
-      taskId: null
+      taskId: null,
+      owner: ""
     };
   }
   componentDidMount = () => {
     let that = this;
     getExcept("Task", "tobeNotified", this.state.userid).then(function(value) {
-      console.log(queryresult);
-      that.setState({ notification: true });
-      addUser(that.state.userid, queryresult[0].taskid);
+      console.log(queryresult.length);
+      if (queryresult.length !== 0) {
+        addUser(that.state.userid, queryresult[0].taskid);
+        console.log(queryresult);
+        that.setState({ notification: true });
+        queryresult = [];
+      }
     });
   };
 
@@ -77,7 +79,9 @@ class Dashboard extends Component {
           <div className="bar">
             <SideBar></SideBar>
           </div>
-          {this.state.notification ? <ControlledPopup></ControlledPopup> : null}
+          {this.state.notification ? (
+            <ControlledPopup taskOwner={this.state.owner}></ControlledPopup>
+          ) : null}
           <div className="dashboard">
             <div className="column">
               <div className="help-title">
