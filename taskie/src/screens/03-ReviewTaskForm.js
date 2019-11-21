@@ -3,7 +3,7 @@ import css from "../css/taskform.css";
 import React, {useState, useEffect} from "react";
 import { Link, useParams } from "react-router-dom";
 
-function HelpTaskForm (props) {
+function ReviewTaskForm (props) {
   
   let { id } = useParams();
   const [task,setTask] = useState([]);
@@ -14,20 +14,20 @@ function HelpTaskForm (props) {
     })
    }, []);
 
-   const acceptHandler = event => {
+   const doneHandler = event => {
     event.preventDefault();
     firebase.firestore().collection('Task').doc(id).update({taskStatus: "Done"});
     props.history.push("/Home");
    };
 
-   const rejectHandler = event => {
+   const cancelHandler = event => {
     event.preventDefault();
     props.history.push("/Home");
    };
 
    return (
     <div className="task">
-      <form>
+      <form onSubmit= {doneHandler}>
         <label>Task</label>
         <br></br>
         <input disabled type="text" name="taskTitle" value = {task.taskTitle} />
@@ -60,20 +60,41 @@ function HelpTaskForm (props) {
           <br></br>
           {task.createdBy}
         </p>
+        <br></br>
+        <p>
+          Solved by
+          <br></br>
+          {task.acceptedBy}
+        </p>
+        <label>Solution</label>
+        <br></br>
+        <textarea 
+        name="solution" 
+        value={task.taskSolution}
+        disabled/>
+        <br></br>
+        <label>Solution Link</label>
+          <br></br>
+          <input
+          type="text"
+          name="solutionLink"
+          value={task.solutionLink}
+          disabled/>
+          <br></br>
         <Link to="/Home">
         <input
-          name="accept"
+          name="done"
           type="submit"
-          value="Accept"
-          onClick= {acceptHandler}
+          value="Done"
+          onClick= {doneHandler}
         ></input>
         </Link>
         <Link to="/Home">
         <input
-          name="reject"
+          name="cancel"
           type="submit"
-          value="Reject"
-          onClick= {rejectHandler}
+          value="Cancel"
+          onClick= {cancelHandler}
         ></input>
         </Link>
       </form>
@@ -81,4 +102,4 @@ function HelpTaskForm (props) {
   );
 }
 
-export default HelpTaskForm;
+export default ReviewTaskForm;

@@ -40,7 +40,18 @@ function Task(props) {
       setTask(taskArray);
    });
    }, []);
-  console.log(props.taskStatus)
+   
+  //  function List({ list }) {
+  //   if (!list) {
+  //     return null;
+  //   }
+  //   return (
+  //     <div>
+  //       {list.map(item => <ListItem item={item} />)}
+  //     </div>
+  //   );
+  // }
+
   switch(props.taskStatus){
     case 'Help':
       return (
