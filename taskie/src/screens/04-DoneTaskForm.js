@@ -3,7 +3,7 @@ import css from "../css/taskform.css";
 import React, {useState, useEffect} from "react";
 import { Link, useParams } from "react-router-dom";
 
-function HelpTaskForm (props) {
+function DoneTaskForm (props) {
   
   let { id } = useParams();
   const [task,setTask] = useState([]);
@@ -14,13 +14,7 @@ function HelpTaskForm (props) {
     })
    }, []);
 
-   const acceptHandler = event => {
-    event.preventDefault();
-    firebase.firestore().collection('Task').doc(id).update({taskStatus: "Done"});
-    props.history.push("/Home");
-   };
-
-   const rejectHandler = event => {
+   const closeHandler = event => {
     event.preventDefault();
     props.history.push("/Home");
    };
@@ -60,20 +54,33 @@ function HelpTaskForm (props) {
           <br></br>
           {task.createdBy}
         </p>
+        <br></br>
+        <p>
+          Solved by
+          <br></br>
+          {task.acceptedBy}
+        </p>
+        <label>Solution</label>
+        <br></br>
+        <textarea 
+        name="solution" 
+        value={task.taskSolution}
+        disabled/>
+        <br></br>
+        <label>Solution Link</label>
+          <br></br>
+          <input
+          type="text"
+          name="solutionLink"
+          value={task.solutionLink}
+          disabled/>
+          <br></br>
         <Link to="/Home">
         <input
-          name="accept"
+          name="close"
           type="submit"
-          value="Accept"
-          onClick= {acceptHandler}
-        ></input>
-        </Link>
-        <Link to="/Home">
-        <input
-          name="reject"
-          type="submit"
-          value="Reject"
-          onClick= {rejectHandler}
+          value="Close"
+          onClick= {closeHandler}
         ></input>
         </Link>
       </form>
@@ -81,4 +88,4 @@ function HelpTaskForm (props) {
   );
 }
 
-export default HelpTaskForm;
+export default DoneTaskForm;
