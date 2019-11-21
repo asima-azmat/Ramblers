@@ -1,8 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, setState } from "react";
 import firebase from "firebase";
 import css from "../css/taskform.css";
 //import { Link, BrowserRouter } from "react-router-dom";
 import { Link } from "@material-ui/core";
+import NewTaskPopup from "../components/NewTaskPopup.js";
 
 class TaskForm extends Component {
   constructor(props) {
@@ -20,7 +21,8 @@ class TaskForm extends Component {
       assignedTo: "",
       taskStatus: "",
       taskLink: "",
-      tobeNotified: []
+      tobeNotified: [],
+      notification: false
     };
   }
 
@@ -56,6 +58,7 @@ class TaskForm extends Component {
   submitHandler = event => {
     event.preventDefault();
     const tobeNotified = this.state.tobeNotified.concat(this.state.userid);
+    this.setState({ notification: true });
 
     const {
       taskTitle,
@@ -103,7 +106,11 @@ class TaskForm extends Component {
           taskLink: "",
           tobeNotified: []
         });
-        this.props.history.push("/Home");
+        let that = this;
+
+        setTimeout(function() {
+          that.props.history.push("/Home");
+        }, 2000);
       })
       .catch(error => {
         console.error("Error adding document: ", error);
@@ -118,6 +125,9 @@ class TaskForm extends Component {
   render() {
     return (
       <div className="task">
+        {this.state.notification ? (
+          <NewTaskPopup taskOwner={this.state.owner}></NewTaskPopup>
+        ) : null}
         <form onSubmit={this.submitHandler}>
           <label>Task</label>
           <br></br>

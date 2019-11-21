@@ -52,7 +52,7 @@ class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      userid: firebase.auth().currentUser.uid,
+      userid: "",
       notification: false,
       taskId: null,
       owner: ""
@@ -60,14 +60,20 @@ class Dashboard extends Component {
   }
   componentDidMount = () => {
     let that = this;
-    getExcept("Task", "tobeNotified", this.state.userid).then(function(value) {
-      console.log(queryresult.length);
-      if (queryresult.length !== 0) {
-        addUser(that.state.userid, queryresult[0].taskid);
-        console.log(queryresult);
-        that.setState({ notification: true });
-        queryresult = [];
-      }
+
+    firebase.auth().onAuthStateChanged(function(currentUser) {
+      that.setState({ userid: currentUser.uid });
+      getExcept("Task", "tobeNotified", that.state.userid).then(function(
+        value
+      ) {
+        console.log(queryresult.length);
+        if (queryresult.length !== 0) {
+          addUser(that.state.userid, queryresult[0].taskid);
+          console.log(queryresult);
+          that.setState({ notification: true });
+          queryresult = [];
+        }
+      });
     });
   };
 
