@@ -39,7 +39,7 @@ class TaskForm extends Component {
         that.setState({
           company: doc.data().company,
           team: doc.data().team,
-          createdBy: currentUser.uid,
+          createdBy: currentUser.displayName,
           taskStatus: "Help"
         });
       })
@@ -55,7 +55,6 @@ class TaskForm extends Component {
 
   submitHandler = event => {
     event.preventDefault();
-    console.log(this.props);
     const {
       taskTitle,
       description,
@@ -99,13 +98,18 @@ class TaskForm extends Component {
           taskStatus: "",
           taskLink: ""
         });
-        console.log(this.props);
         this.props.history.push("/Home");
       })
       .catch(error => {
         console.error("Error adding document: ", error);
       });
   };
+  
+  cancelHandler = event => {
+    event.preventDefault();
+    this.props.history.push("/Home");
+   };
+
   render() {
     return (
       <div className="task">
@@ -136,15 +140,16 @@ class TaskForm extends Component {
           <br></br>
           <input type="text" name="taskLink" onChange={this.changeHandler} />
           <br></br>
-          <p>
-            Created by
-            <br></br>
-            {this.state.userid}
-          </p>
           <input
             name="submit"
             type="submit"
             value="Send the Help Request"
+          ></input>
+          <input
+            name="cancel"
+            type="submit"
+            value="Cancel"
+            onClick= {this.cancelHandler}
           ></input>
         </form>
       </div>

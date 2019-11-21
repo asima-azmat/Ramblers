@@ -3,7 +3,7 @@ import css from "../css/taskform.css";
 import React, {useState, useEffect} from "react";
 import { Link, useParams } from "react-router-dom";
 
-function HelpTaskForm (props) {
+function AcceptTaskForm (props) {
 
   let { id } = useParams();
   const [task,setTask] = useState([]);
@@ -13,10 +13,13 @@ function HelpTaskForm (props) {
       setTask(doc.data());
     })
    }, []);
+   const [taskSolution, setTaskSolution] = useState("");
+   const [solutionLink, setSolutionLink] = useState("");
 
   const reviewHandler = event => {
     event.preventDefault();
-    firebase.firestore().collection('Task').doc(id).update({taskStatus: "Review"});
+    firebase.firestore().collection('Task').doc(id)
+    .update({taskStatus: "Review", taskSolution: taskSolution, solutionLink: solutionLink});
     props.history.push("/Home");
    };
 
@@ -60,13 +63,26 @@ function HelpTaskForm (props) {
           <br></br>
           {task.createdBy}
         </p>
+        <br></br>
+        <p>
+          Accepted by
+          <br></br>
+          {task.acceptedBy}
+        </p>
         <label>Solution</label>
         <br></br>
-        <textarea name="solution"/>
+        <textarea 
+        name="solution" 
+        value={taskSolution}
+        onChange={e => setTaskSolution(e.target.value)}/>
         <br></br>
         <label>Solution Link</label>
           <br></br>
-          <input type="text" name="solutionLink"/>
+          <input
+          type="text"
+          name="solutionLink"
+          value={solutionLink}
+          onChange={e => setSolutionLink(e.target.value)}/>
           <br></br>
           <br></br>
         <Link to="/Home">
@@ -74,6 +90,7 @@ function HelpTaskForm (props) {
           name="review"
           type="submit"
           value="Send to Review"
+          onClick= {reviewHandler}
         ></input>
         </Link>
         <Link to="/Home">
@@ -89,4 +106,4 @@ function HelpTaskForm (props) {
   );
 }
 
-export default HelpTaskForm;
+export default AcceptTaskForm;
