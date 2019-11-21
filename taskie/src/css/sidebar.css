@@ -1,0 +1,57 @@
+/* #323a40 */
+.side-bar { 
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #323a40; 
+    overflow-x: hidden;
+    transition: 0.5s;
+    /* padding-top: 60px;  */
+    /* margin-top: 60px; */
+} 
+
+.holder {
+    width: 15%;
+    height: 8%;
+    z-index: 0;
+    color: red;
+    background: red;
+    border: 8px solid red;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}  
+/* ======================= Icons ======================= */
+/* ======================= Icons ======================= */
+/* ======================= Icons ======================= */
+h5 {
+    color: white;
+}
+
+
+ul {
+    list-style-type: none;
+    border-color: white;
+    color: white;
+    text-align: left;
+}
+
+.li {
+    padding-bottom: 10px;
+}
+.list-item {
+    border-bottom: 1px solid white;
+    color: white;
+}
+
+img {
+    margin: 15px;
+}
