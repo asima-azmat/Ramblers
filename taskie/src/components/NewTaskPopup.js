@@ -14,8 +14,7 @@ function ControlledPopup(props) {
       <div>
         <h1>
           {" "}
-          Hey John! - Mary needs your help! Get 15 minutes free-time by solving
-          her task.{" "}
+          Thank you Mary for creating a new task! Your team mates will help you.{" "}
         </h1>
         <br></br>
         <Link to="/TaskForm">
