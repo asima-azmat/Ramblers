@@ -1,7 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, setState } from "react";
 import firebase from "firebase";
 import css from "../css/taskform.css";
 //import { Link, BrowserRouter } from "react-router-dom";
+import { Link } from "@material-ui/core";
+import NewTaskPopup from "../components/NewTaskPopup.js";
 
 class TaskForm extends Component {
   constructor(props) {
@@ -18,36 +20,36 @@ class TaskForm extends Component {
       createdBy: "",
       assignedTo: "",
       taskStatus: "",
-      taskLink: ""
+      taskLink: "",
+      tobeNotified: [],
+      notification: false
     };
   }
 
   componentDidMount() {
     let that = this;
 
-    firebase.auth().onAuthStateChanged(function(currentUser){
+    firebase.auth().onAuthStateChanged(function(currentUser) {
       that.setState({ userid: currentUser.uid, email: currentUser.email });
-        
-    var doc = firebase
-      .firestore()
-      .collection("User")
-      .doc(currentUser.uid);
-   
-    doc
-      .get()  
-      .then(doc => {
-        that.setState({
-          company: doc.data().company,
-          team: doc.data().team,
-          createdBy: currentUser.displayName,
-          taskStatus: "Help"
+
+      var doc = firebase
+        .firestore()
+        .collection("User")
+        .doc(currentUser.uid);
+
+      doc
+        .get()
+        .then(doc => {
+          that.setState({
+            createdBy: that.state.userid,
+            taskStatus: "Help"
+          });
+        })
+        .catch(function(error) {
+          console.log("Error getting document:", error);
         });
-      })
-      .catch(function(error) {
-        console.log("Error getting document:", error);
-      });
     });
-  };
+  }
 
   changeHandler = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -55,6 +57,9 @@ class TaskForm extends Component {
 
   submitHandler = event => {
     event.preventDefault();
+    const tobeNotified = this.state.tobeNotified.concat(this.state.userid);
+    this.setState({ notification: true });
+
     const {
       taskTitle,
       description,
@@ -68,6 +73,7 @@ class TaskForm extends Component {
       taskStatus,
       taskLink
     } = this.state;
+
     firebase
       .firestore()
       .collection("Task")
@@ -82,7 +88,8 @@ class TaskForm extends Component {
         createdBy,
         assignedTo,
         taskStatus,
-        taskLink
+        taskLink,
+        tobeNotified
       })
       .then(docRef => {
         this.setState({
@@ -96,23 +103,31 @@ class TaskForm extends Component {
           createdBy: "",
           assignedTo: "",
           taskStatus: "",
-          taskLink: ""
+          taskLink: "",
+          tobeNotified: []
         });
-        this.props.history.push("/Home");
+        let that = this;
+
+        setTimeout(function() {
+          that.props.history.push("/Home");
+        }, 2000);
       })
       .catch(error => {
         console.error("Error adding document: ", error);
       });
   };
-  
+
   cancelHandler = event => {
     event.preventDefault();
     this.props.history.push("/Home");
-   };
+  };
 
   render() {
     return (
       <div className="task">
+        {this.state.notification ? (
+          <NewTaskPopup taskOwner={this.state.owner}></NewTaskPopup>
+        ) : null}
         <form onSubmit={this.submitHandler}>
           <label>Task</label>
           <br></br>
@@ -149,7 +164,7 @@ class TaskForm extends Component {
             name="cancel"
             type="submit"
             value="Cancel"
-            onClick= {this.cancelHandler}
+            onClick={this.cancelHandler}
           ></input>
         </form>
       </div>

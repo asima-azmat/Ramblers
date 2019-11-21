@@ -1,24 +1,82 @@
 import React, { Component } from "react";
-//import firebase, { db } from "firebase";
 import { BrowserRouter as Redirect, Router, Route } from "react-router-dom";
+import firebase, { db } from "firebase";
 import Typography from "@material-ui/core/Typography";
 import css from "../css/dashboard.css";
 import { red } from "@material-ui/core/colors";
 import Navbar from "../components/Navbar";
 import SideBar from "../components/Sidebar";
-import TaskForm from "./TaskForm";
-import CreateUser from "./CreateUser";
 import addicon from "../assets/addicon.png";
 import { Link, BrowserRouter } from "react-router-dom";
 import Task from "../components/Task";
+import ControlledPopup from "../components/ControlledPopup";
+
+var queryresult = [];
+var isNElement = true;
+function createTask(id, data) {
+  return { ...data, taskid: id };
+}
+
+function getExcept(collectionname, property, filter) {
+  return firebase
+    .firestore()
+    .collection(collectionname)
+    .get()
+    .then(function(querySnapshot) {
+      querySnapshot.docs.forEach(function(doc) {
+        if (doc.data()[property]) {
+          if (!doc.data()[property].includes(filter)) {
+            const newTask = createTask(doc.id, doc.data());
+            queryresult.push(newTask);
+            console.log(newTask);
+          }
+        }
+      });
+      return true;
+    });
+}
+function addUser(userid, taskId) {
+  let task_not = firebase
+    .firestore()
+    .collection("Task")
+    .doc(taskId);
+
+  let tmp = firebase.firestore.FieldValue.arrayUnion(userid);
+  var arrUnion = task_not.update({
+    tobeNotified: tmp
+  });
+  console.log("added");
+}
 
 class Dashboard extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      userid: "",
+      notification: false,
+      taskId: null,
+      owner: ""
+    };
   }
-  componentDidMount = () => {};
-  
+  componentDidMount = () => {
+    let that = this;
+
+    firebase.auth().onAuthStateChanged(function(currentUser) {
+      that.setState({ userid: currentUser.uid });
+      getExcept("Task", "tobeNotified", that.state.userid).then(function(
+        value
+      ) {
+        console.log(queryresult.length);
+        if (queryresult.length !== 0) {
+          addUser(that.state.userid, queryresult[0].taskid);
+          console.log(queryresult);
+          that.setState({ notification: true });
+          queryresult = [];
+        }
+      });
+    });
+  };
+
   render() {
     return (
       <div className="app">
@@ -27,6 +85,9 @@ class Dashboard extends Component {
           <div className="bar">
             <SideBar></SideBar>
           </div>
+          {this.state.notification ? (
+            <ControlledPopup taskOwner={this.state.owner}></ControlledPopup>
+          ) : null}
           <div className="dashboard">
             <div className="column">
               <div className="help-title">
@@ -43,8 +104,8 @@ class Dashboard extends Component {
                   </button>
                 </Link>
               </div>
-                <Task taskStatus="Help"></Task>
-              </div>
+              <Task taskStatus="Help"></Task>
+            </div>
             <div className="column">
               <div className="accepted-title">
                 <Typography component="h1" variant="h6" color="inherit" noWrap>
