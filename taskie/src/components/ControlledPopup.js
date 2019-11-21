@@ -6,7 +6,6 @@ function ControlledPopup(props) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    console.log(props);
   }, []);
 
   return (
