@@ -4,13 +4,6 @@ import * as firebaseui from "firebaseui";
 import "firebaseui/dist/firebaseui.css";
 import { Redirect } from "react-router-dom";
 import "../css/signup.css";
-// import CssBaseline from "@material-ui/core/CssBaseline";
-// import Grid from "@material-ui/core/Grid";
-// import CreateUser from "./CreateUser.js";
-// import Dashboard from "./Dashboard.js";
-// import { BrowserRouter as Router, Route } from "react-router-dom";
-// import TaskForm from "./TaskForm.js";
-// import welcomeImage from '../assets/welcome.png';
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Grid from "@material-ui/core/Grid";
 
