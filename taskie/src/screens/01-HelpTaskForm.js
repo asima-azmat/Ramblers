@@ -1,46 +1,66 @@
 import firebase from "firebase";
 import css from "../css/taskform.css";
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import AcceptingTask from "../components/AcceptingTask";
 
-function HelpTaskForm (props) {
-  
+function HelpTaskForm(props) {
   let { id } = useParams();
-  const [task,setTask] = useState([]);
+  const [task, setTask] = useState([]);
+  let [notification, setNotification] = useState(false);
 
-   useEffect(() => {
-    const taskData = firebase.firestore().collection('Task').doc(id)
+  useEffect(() => {
+    const taskData = firebase
+      .firestore()
+      .collection("Task")
+      .doc(id);
     taskData.get().then(function(doc) {
       setTask(doc.data());
-    })
-   }, []);
+    });
+  }, []);
 
-   const acceptHandler = event => {
+  const acceptHandler = event => {
     event.preventDefault();
-    firebase.firestore().collection('Task').doc(id)
-    .update({taskStatus: "Accepted", acceptedBy: firebase.auth().currentUser.displayName, idAcceptedBy: firebase.auth().currentUser.uid});
-    props.history.push("/Home");
-   };
+    setNotification(true);
+    firebase
+      .firestore()
+      .collection("Task")
+      .doc(id)
+      .update({
+        taskStatus: "Accepted",
+        acceptedBy: firebase.auth().currentUser.displayName,
+        idAcceptedBy: firebase.auth().currentUser.uid
+      });
+    setTimeout(function() {
+      props.history.push("/Home");
+    }, 2000);
+  };
 
-   const rejectHandler = event => {
+  const rejectHandler = event => {
     event.preventDefault();
     props.history.push("/Home");
-   };
+  };
 
-   return (
+  return (
     <div className="task">
+      {notification ? <AcceptingTask></AcceptingTask> : null}
       <form>
         <label>Task</label>
         <br></br>
-        <input disabled type="text" name="taskTitle" value = {task.taskTitle} />
+        <input disabled type="text" name="taskTitle" value={task.taskTitle} />
         <br></br>
         <label>Description</label>
         <br></br>
-        <textarea disabled name="description" value = {task.description} />
+        <textarea disabled name="description" value={task.description} />
         <br></br>
         <label>Related Role</label>
         <br></br>
-        <input disabled type="text" name="relatedRole" value = {task.relatedRole} />
+        <input
+          disabled
+          type="text"
+          name="relatedRole"
+          value={task.relatedRole}
+        />
         <br></br>
         <label>Deadline</label>
         <br></br>
@@ -48,35 +68,35 @@ function HelpTaskForm (props) {
           disabled
           type="date"
           name="estimatedTime"
-          value = {task.estimatedTime}
+          value={task.estimatedTime}
         />
         <br></br>
-        <input disabled type="text" name="deadline" value = {task.deadline} />
+        <input disabled type="text" name="deadline" value={task.deadline} />
         <br></br>
         <label>Link</label>
-          <br></br>
-          <input disabled type="text" name="taskLink" value={task.taskLink} />
-          <br></br>
+        <br></br>
+        <input disabled type="text" name="taskLink" value={task.taskLink} />
+        <br></br>
         <p>
           Created by
           <br></br>
           {task.createdBy}
         </p>
         <Link to="/Home">
-        <input
-          name="accept"
-          type="submit"
-          value="Accept"
-          onClick= {acceptHandler}
-        ></input>
+          <input
+            name="accept"
+            type="submit"
+            value="Accept"
+            onClick={acceptHandler}
+          ></input>
         </Link>
         <Link to="/Home">
-        <input
-          name="reject"
-          type="submit"
-          value="Reject"
-          onClick= {rejectHandler}
-        ></input>
+          <input
+            name="reject"
+            type="submit"
+            value="Reject"
+            onClick={rejectHandler}
+          ></input>
         </Link>
       </form>
     </div>
