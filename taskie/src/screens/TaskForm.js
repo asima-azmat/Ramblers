@@ -22,7 +22,10 @@ class TaskForm extends Component {
       taskStatus: "",
       taskLink: "",
       tobeNotified: [],
-      notification: false
+      notification: false,
+      acceptedNotification: false,
+      doneNotification: false,
+      reviewNotification: false
     };
   }
 
@@ -71,7 +74,10 @@ class TaskForm extends Component {
       createdBy,
       assignedTo,
       taskStatus,
-      taskLink
+      taskLink,
+      acceptedNotification,
+      doneNotification,
+      reviewNotification
     } = this.state;
 
     firebase
@@ -89,7 +95,10 @@ class TaskForm extends Component {
         assignedTo,
         taskStatus,
         taskLink,
-        tobeNotified
+        tobeNotified,
+        acceptedNotification,
+        doneNotification,
+        reviewNotification
       })
       .then(docRef => {
         this.setState({
@@ -104,7 +113,10 @@ class TaskForm extends Component {
           assignedTo: "",
           taskStatus: "",
           taskLink: "",
-          tobeNotified: []
+          tobeNotified: [],
+          acceptedNotification: false,
+          doneNotification: false,
+          reviewNotification: false
         });
         let that = this;
 
