@@ -10,12 +10,14 @@ import ReviewTaskForm from "./screens/03-ReviewTaskForm.js";
 import DoneTaskForm from "./screens/04-DoneTaskForm.js";
 import { BrowserRouter as BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import CreateUser from "./screens/CreateUser.js";
+import Reward from "./screens/Reward.js";
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <Switch>
+          <Route path="/Reward" component={Reward} />
           <Route path="/DoneTaskForm/:id" component={DoneTaskForm} />
           <Route path="/ReviewTaskForm/:id" component={ReviewTaskForm} />
           <Route path="/AcceptTaskForm/:id" component={AcceptTaskForm} />

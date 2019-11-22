@@ -60,7 +60,7 @@ function HelpTaskForm (props) {
         <p>
           Created by
           <br></br>
-          {task.createdBy}
+          {task.createdByName}
         </p>
         <Link to="/Home">
         <input

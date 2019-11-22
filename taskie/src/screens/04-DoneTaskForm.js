@@ -52,7 +52,7 @@ function DoneTaskForm (props) {
         <p>
           Created by
           <br></br>
-          {task.createdBy}
+          {task.createdByName}
         </p>
         <br></br>
         <p>

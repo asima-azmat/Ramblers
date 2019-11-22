@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-import { BrowserRouter as Redirect, Router, Route } from "react-router-dom";
-import firebase, { db } from "firebase";
+import firebase from "firebase";
 import Typography from "@material-ui/core/Typography";
 import css from "../css/dashboard.css";
 import { red } from "@material-ui/core/colors";
 import Navbar from "../components/Navbar";
 import SideBar from "../components/Sidebar";
 import addicon from "../assets/addicon.png";
-import { Link, BrowserRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Task from "../components/Task";
 import ControlledPopup from "../components/ControlledPopup";
 
@@ -87,7 +86,7 @@ class Dashboard extends Component {
           <div className="dashboard">
             <div className="column">
               <div className="help-title">
-                <Typography component="h1" variant="h6" color="inherit" noWrap>
+                <Typography component="h1" variant="h6" color="#FFFFFF" noWrap>
                   Help needed
                 </Typography>
               </div>
@@ -104,7 +103,7 @@ class Dashboard extends Component {
             </div>
             <div className="column">
               <div className="accepted-title">
-                <Typography component="h1" variant="h6" color="inherit" noWrap>
+                <Typography component="h1" variant="h6" color="#FFFFFF" noWrap>
                   Accepted
                 </Typography>
               </div>
@@ -112,7 +111,7 @@ class Dashboard extends Component {
             </div>
             <div className="column">
               <div className="review-title">
-                <Typography component="h1" variant="h6" color="inherit" noWrap>
+                <Typography component="h1" variant="h6" color="#FFFFFF" noWrap>
                   To be reviewed
                 </Typography>
               </div>
@@ -123,7 +122,7 @@ class Dashboard extends Component {
                 <Typography
                   component="h1"
                   variant="h6"
-                  color="inherit"
+                  color="#FFFFFF"
                   noWrap
                   style={{ backgroundColor: red }}
                 >

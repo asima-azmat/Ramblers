@@ -6,6 +6,7 @@ import { Link, useParams } from "react-router-dom";
 function ReviewTaskForm (props) {
   
   let { id } = useParams();
+
   const [task,setTask] = useState([]);
    useEffect(() => {
     const taskData = firebase.firestore().collection('Task').doc(id)
@@ -13,10 +14,27 @@ function ReviewTaskForm (props) {
       setTask(doc.data());
     })
    }, []);
+   
+  // const usertoReward = task.idAcceptedBy;
+
+  //  console.log("ID of User to Reward:", usertoReward);
+
+  // const [rewardUser,setRewardUser] = useState([]);
+  //   useEffect(() => {
+  //   const rewardUserData = firebase.firestore().collection('User').doc(usertoReward)
+  //   rewardUserData.get().then(function(doc) {
+  //   setRewardUser(doc.data());
+  //   })
+  //   }, []);
+  //   console.log("wtf", rewardUser.email);
 
    const doneHandler = event => {
     event.preventDefault();
-    firebase.firestore().collection('Task').doc(id).update({taskStatus: "Done"});
+    firebase
+    .firestore()
+    .collection('Task')
+    .doc(id)
+    .update({taskStatus: "Done", taskResolvedBy: task.idAcceptedBy});
     props.history.push("/Home");
    };
 
@@ -58,7 +76,7 @@ function ReviewTaskForm (props) {
         <p>
           Created by
           <br></br>
-          {task.createdBy}
+          {task.createdByName}
         </p>
         <br></br>
         <p>

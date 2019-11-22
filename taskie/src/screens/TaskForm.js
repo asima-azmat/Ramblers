@@ -18,6 +18,7 @@ class TaskForm extends Component {
       team: "",
       company: "",
       createdBy: "",
+      createdByName: "",
       assignedTo: "",
       taskStatus: "",
       taskLink: "",
@@ -30,7 +31,7 @@ class TaskForm extends Component {
     let that = this;
 
     firebase.auth().onAuthStateChanged(function(currentUser) {
-      that.setState({ userid: currentUser.uid, email: currentUser.email });
+      that.setState({ userid: currentUser.uid, email: currentUser.email, createdByName: currentUser.displayName });
 
       var doc = firebase
         .firestore()
@@ -42,6 +43,7 @@ class TaskForm extends Component {
         .then(doc => {
           that.setState({
             createdBy: that.state.userid,
+            createdByName: that.state.createdByName,
             taskStatus: "Help"
           });
         })
@@ -69,6 +71,7 @@ class TaskForm extends Component {
       company,
       team,
       createdBy,
+      createdByName,
       assignedTo,
       taskStatus,
       taskLink
@@ -86,6 +89,7 @@ class TaskForm extends Component {
         company,
         team,
         createdBy,
+        createdByName,
         assignedTo,
         taskStatus,
         taskLink,
@@ -101,6 +105,7 @@ class TaskForm extends Component {
           company: "",
           team: "",
           createdBy: "",
+          createdByName: "",
           assignedTo: "",
           taskStatus: "",
           taskLink: "",

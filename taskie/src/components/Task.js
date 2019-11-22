@@ -60,7 +60,7 @@ function Task(props) {
                         color="textSecondary"
                         gutterBottom
                       >
-                        Created By: {taskObject.createdBy}
+                        Created By: {taskObject.createdByName}
                       </Typography>
                       <Typography color="textSecondary">
                         Deadline: {taskObject.deadline}
@@ -92,7 +92,7 @@ function Task(props) {
                         color="textSecondary"
                         gutterBottom
                       >
-                        Created By: {taskObject.createdBy}
+                        Created By: {taskObject.createdByName}
                       </Typography>
                       <Typography color="textSecondary">
                         Deadline: {taskObject.deadline}
@@ -124,7 +124,7 @@ function Task(props) {
                         color="textSecondary"
                         gutterBottom
                       >
-                        Created By: {taskObject.createdBy}
+                        Created By: {taskObject.createdByName}
                       </Typography>
                       <Typography color="textSecondary">
                         Deadline: {taskObject.deadline}
@@ -156,7 +156,7 @@ function Task(props) {
                         color="textSecondary"
                         gutterBottom
                       >
-                        Created By: {taskObject.createdBy}
+                        Created By: {taskObject.createdByName}
                       </Typography>
                       <Typography color="textSecondary">
                         Deadline: {taskObject.deadline}

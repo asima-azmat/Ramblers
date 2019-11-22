@@ -3,7 +3,7 @@ import firebase, { db } from "firebase";
 import Avatar from "@material-ui/core/Avatar";
 import Badge from "@material-ui/core/Badge";
 import css from "../css/sidebar.css";
-// import css from "../css/navbar.css";
+import { Link } from "react-router-dom";
 
 import icon1 from "../assets/dashboard.png";
 import icon2 from "../assets/freetime.png";
@@ -30,7 +30,12 @@ class SideBar extends Component {
         <div className="holder"></div>
         <div>
           <div className="list-item"><img src={icon1} alt="icons" style={{ width: 30, height: 30 }}></img> TEAM DASHBOARD</div>
-          <div className="list-item"><img src={icon2} alt="icons" style={{ width: 30, height: 30 }}></img> MY FREE TIME</div>
+        <Link to="/Reward">
+          <div className="list-item">
+            <img src={icon2} alt="icons" style={{ width: 30, height: 30 }}/>
+             MY FREE TIME
+             </div>
+             </Link>
           <div className="list-item"><img src={icon3} alt="icons" style={{ width: 30, height: 30 }}></img> MY TEAM</div>
         </div>
 
