@@ -1,4 +1,17 @@
 .task {
   background-color: #e0e1e6;
   height: 100vh;
+  padding:20px;
+}
+
+.left-fields {
+  width: 50%;
+  height: 100%;
+  display: block;
+}
+
+.right-fields {
+  width: 20%;
+  height: 100%;
+  display: block;
 }

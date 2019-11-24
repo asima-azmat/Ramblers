@@ -32,7 +32,6 @@ class Navbar extends Component {
         </div>
 
         <div className="title">
-          <h3>Team tasks in progress</h3>
         </div>
 
         <div className="user">
@@ -41,7 +40,12 @@ class Navbar extends Component {
             <Avatar src={this.state.userImage}></Avatar>
           </div>
           <div className="logout">
-            <Button onClick={() => firebase.auth().signOut()}>Logout</Button>
+            <Button 
+            variant="contained"
+            color="default"
+            onClick={() => firebase.auth().signOut()}>
+              Logout
+              </Button>
           </div>
         </div>
 

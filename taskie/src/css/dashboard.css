@@ -5,7 +5,7 @@
 .column {
   float: left;
   width: 25%;
-  border-left: 1px solid black;
+  border-left: 1px solid rgb(90, 88, 88);
   height: 500px;
 }
 
@@ -29,10 +29,10 @@
   width: 85%;
   height: 100%;
   display: block;
-  height: 100%;
 }
 .screen {
   display: flex;
+  background: rgb(252, 249, 249);
 }
 .bar {
   width: 15%;
@@ -41,21 +41,37 @@
 }
 .done-title {
   background-color: #48a690;
-  height: 1cm;
+  height: 1.5cm;
+  width: 7.5cm;
+  color: white;
+  position: fixed;
 }
 .review-title {
   background-color: #f98f56;
-  height: 1cm;
+  height: 1.5cm;
+  width: 7.5cm;
+  color: white;
+  position: fixed;
 }
 .accepted-title {
   background-color: #609eeb;
-  height: 1cm;
+  height: 1.5cm;
+  width: 7.5cm;
+  color: white;
+  position: fixed;
 }
 .help-title {
   background-color: #f24e4e;
-  height: 1cm;
+  height: 1.5cm;
+  width: 7.5cm;
+  color: white;
+  position: fixed;
 }
 
 title {
   flex-grow: 1;
+}
+
+.col-content {
+  padding-top: 1cm;
 }

@@ -2,6 +2,8 @@ import firebase from "firebase";
 import css from "../css/taskform.css";
 import React, {useState, useEffect} from "react";
 import { Link, useParams } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import SideBar from "../components/Sidebar";
 
 function ReviewTaskForm (props) {
   
@@ -44,7 +46,14 @@ function ReviewTaskForm (props) {
    };
 
    return (
-    <div className="task">
+    <div className="app">
+    <Navbar></Navbar>
+    <div className="screen">
+      <div className="bar">
+        <SideBar></SideBar>
+      </div>
+      <div className="dashboard">
+      <div className="task">
       <form onSubmit= {doneHandler}>
         <label>Task</label>
         <br></br>
@@ -116,6 +125,9 @@ function ReviewTaskForm (props) {
         ></input>
         </Link>
       </form>
+    </div>
+    </div>
+    </div>
     </div>
   );
 }

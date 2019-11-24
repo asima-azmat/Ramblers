@@ -86,11 +86,11 @@ class Dashboard extends Component {
           <div className="dashboard">
             <div className="column">
               <div className="help-title">
-                <Typography component="h1" variant="h6" color="#FFFFFF" noWrap>
+                <Typography component="h1" variant="h6" noWrap>
                   Help needed
                 </Typography>
               </div>
-              <div>
+              <div className="col-content">
                 <br></br>
                 <Link to="/TaskForm">
                   <button>
@@ -103,33 +103,38 @@ class Dashboard extends Component {
             </div>
             <div className="column">
               <div className="accepted-title">
-                <Typography component="h1" variant="h6" color="#FFFFFF" noWrap>
+                <Typography component="h1" variant="h6" noWrap>
                   Accepted
                 </Typography>
               </div>
-              <Task taskStatus="Accepted"></Task>
+              <div className="col-content">
+              <Task taskStatus="Typography"></Task>
+              </div>
             </div>
             <div className="column">
               <div className="review-title">
-                <Typography component="h1" variant="h6" color="#FFFFFF" noWrap>
+                <Typography component="h1" variant="h6" noWrap>
                   To be reviewed
                 </Typography>
               </div>
+              <div className="col-content">
               <Task taskStatus="Review"></Task>
+              </div>
             </div>
             <div className="column">
               <div className="done-title">
                 <Typography
                   component="h1"
                   variant="h6"
-                  color="#FFFFFF"
                   noWrap
                   style={{ backgroundColor: red }}
                 >
                   Done
                 </Typography>
               </div>
+              <div className="col-content">
               <Task taskStatus="Done"></Task>
+              </div>
             </div>
           </div>
         </div>

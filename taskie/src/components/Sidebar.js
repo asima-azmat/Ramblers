@@ -29,14 +29,22 @@ class SideBar extends Component {
 
         <div className="holder"></div>
         <div>
-          <div className="list-item"><img src={icon1} alt="icons" style={{ width: 30, height: 30 }}></img> TEAM DASHBOARD</div>
+        <Link to="/Home">
+          <div className="list-item">
+            <img src={icon1} alt="icons" style={{ width: 30, height: 30 }}/>
+              TEAM DASHBOARD
+              </div>
+              </Link>
         <Link to="/Reward">
           <div className="list-item">
             <img src={icon2} alt="icons" style={{ width: 30, height: 30 }}/>
              MY FREE TIME
              </div>
              </Link>
-          <div className="list-item"><img src={icon3} alt="icons" style={{ width: 30, height: 30 }}></img> MY TEAM</div>
+          <div className="list-item">
+            <img src={icon3} alt="icons" style={{ width: 30, height: 30 }}/>
+             MY TEAM
+             </div>
         </div>
 
       </div>
