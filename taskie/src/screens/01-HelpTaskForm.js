@@ -1,6 +1,6 @@
 import firebase from "firebase";
 import css from "../css/taskform.css";
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -24,26 +24,40 @@ function HelpTaskForm (props) {
   const classes = useStyles();
 
   let { id } = useParams();
-  const [task,setTask] = useState([]);
+  const [task, setTask] = useState([]);
+  let [notification, setNotification] = useState(false);
 
-   useEffect(() => {
-    const taskData = firebase.firestore().collection('Task').doc(id)
+  useEffect(() => {
+    const taskData = firebase
+      .firestore()
+      .collection("Task")
+      .doc(id);
     taskData.get().then(function(doc) {
       setTask(doc.data());
-    })
-   }, []);
+    });
+  }, []);
 
-   const acceptHandler = event => {
+  const acceptHandler = event => {
     event.preventDefault();
-    firebase.firestore().collection('Task').doc(id)
-    .update({taskStatus: "Accepted", acceptedBy: firebase.auth().currentUser.displayName, idAcceptedBy: firebase.auth().currentUser.uid});
-    props.history.push("/Home");
-   };
+    setNotification(true);
+    firebase
+      .firestore()
+      .collection("Task")
+      .doc(id)
+      .update({
+        taskStatus: "Accepted",
+        acceptedBy: firebase.auth().currentUser.displayName,
+        idAcceptedBy: firebase.auth().currentUser.uid
+      });
+    setTimeout(function() {
+      props.history.push("/Home");
+    }, 2000);
+  };
 
-   const rejectHandler = event => {
+  const rejectHandler = event => {
     event.preventDefault();
     props.history.push("/Home");
-   };
+  };
 
    return (
     <div className="app">

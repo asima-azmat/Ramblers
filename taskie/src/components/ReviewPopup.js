@@ -2,18 +2,13 @@ import React, { useState, useEffect } from "react";
 import Popup from "reactjs-popup";
 import { Link } from "react-router-dom";
 
-function ControlledPopup(props) {
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {}, []);
-
+function ReviewPopup(props) {
   return (
     <Popup open modal closeOnDocumentClick>
       <div>
         <h1>
-          {" "}
-          Hey John! - Mary needs your help! Get 15 minutes free-time by solving
-          her task.{" "}
+          Congratulations Mary: John has solved your task - please review the
+          solution!{" "}
         </h1>
         <br></br>
         <Link to={`/HelpTaskForm/${props.taskId}`}>
@@ -23,4 +18,4 @@ function ControlledPopup(props) {
     </Popup>
   );
 }
-export default ControlledPopup;
+export default ReviewPopup;
