@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import firebase, { db } from "firebase";
-import Avatar from "@material-ui/core/Avatar";
-import Badge from "@material-ui/core/Badge";
 import css from "../css/sidebar.css";
 import { Link } from "react-router-dom";
 

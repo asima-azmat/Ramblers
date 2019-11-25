@@ -49,18 +49,22 @@ title {
 
 .help-title {
   background-color: #f24e4e;
+  color: white;
   /* height: 5%; */
 }
 .accepted-title {
   background-color: #609eeb;
+  color: white;
   /* height: 5%; */
 }
 .review-title {
   background-color: #f98f56;
+  color: white;
   /* height: 5%; */
 }
 .done-title {
   background-color: #48a690;
+  color: white;
   /* height: 5%; */
 }
 
