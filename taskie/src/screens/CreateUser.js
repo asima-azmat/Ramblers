@@ -110,6 +110,7 @@ class CreateUser extends Component {
                 <h2>Complete Your Profile</h2>
                 <label>FIRST NAME </label>
                 <input
+                  className="signup-input-text"
                   type="text"
                   name="firstName"
                   placeholder="Erika"
@@ -118,6 +119,7 @@ class CreateUser extends Component {
                 <br />
                 <label>LAST NAME</label>
                 <input
+                  className="signup-input-text"
                   type="text"
                   name="lastName"
                   placeholder="Mustermann"
@@ -126,6 +128,7 @@ class CreateUser extends Component {
                 <br />
                 <label>COMPANY</label>
                 <input
+                  className="signup-input-text"
                   type="text"
                   name="email"
                   placeholder="Digital Product School"
@@ -134,6 +137,7 @@ class CreateUser extends Component {
                 <br />
                 <label>YOUR ROLE</label>
                 <input
+                  className="signup-input-text"
                   type="text"
                   name="team"
                   placeholder="Software Engineer"
@@ -142,6 +146,7 @@ class CreateUser extends Component {
                 <br />
                 <label>YOUR TEAM</label>
                 <input
+                  className="signup-input-text"
                   type="text"
                   name="company"
                   placeholder="The Ramblers"
@@ -150,10 +155,11 @@ class CreateUser extends Component {
                 <br />
                 <ul className="row">
                   <li>
-                    <input type="submit" value="SAVE"></input>
+                    <input className="input-button input-submit-button" type="submit" value="SAVE"></input>
                   </li>
                   <li>
                     <input
+                      className="input-button"
                       type="button"
                       value="CANCEL"
                       onClick={() => firebase.auth().signOut()}

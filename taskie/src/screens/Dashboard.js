@@ -84,7 +84,9 @@ class Dashboard extends Component {
           {this.state.notification ? (
             <ControlledPopup taskOwner={this.state.owner}></ControlledPopup>
           ) : null}
+
           <div className="dashboard">
+
             <div className="column">
               <div className="help-title">
                 <Typography component="h1" variant="h6" color="inherit" noWrap>
@@ -94,7 +96,7 @@ class Dashboard extends Component {
               <div>
                 <br></br>
                 <Link to="/TaskForm">
-                  <button>
+                  <button className="button-new-task">
                     <img src={addicon} style={{ width: 20, height: 20 }}></img>{" "}
                     Create a new task
                   </button>
@@ -102,6 +104,7 @@ class Dashboard extends Component {
               </div>
               <Task taskStatus="Help"></Task>
             </div>
+
             <div className="column">
               <div className="accepted-title">
                 <Typography component="h1" variant="h6" color="inherit" noWrap>
@@ -110,6 +113,7 @@ class Dashboard extends Component {
               </div>
               <Task taskStatus="Accepted"></Task>
             </div>
+
             <div className="column">
               <div className="review-title">
                 <Typography component="h1" variant="h6" color="inherit" noWrap>
@@ -118,6 +122,7 @@ class Dashboard extends Component {
               </div>
               <Task taskStatus="Review"></Task>
             </div>
+
             <div className="column">
               <div className="done-title">
                 <Typography
@@ -132,7 +137,9 @@ class Dashboard extends Component {
               </div>
               <Task taskStatus="Done"></Task>
             </div>
+            
           </div>
+
         </div>
       </div>
     );

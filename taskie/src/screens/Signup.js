@@ -67,7 +67,7 @@ class Signup extends Component {
             <div className="column">
               <div className="right-column">
                 <div>
-                  <h1>Discover Taskie</h1>
+                  <h1 className=".signup-heading">Discover Taskie</h1>
                   <h5 className="subtitle">
                     your new solution to get urgent or unexpected tasks done:
                     <br />

@@ -4,6 +4,8 @@ import css from "../css/taskform.css";
 //import { Link, BrowserRouter } from "react-router-dom";
 import { Link } from "@material-ui/core";
 import NewTaskPopup from "../components/NewTaskPopup.js";
+import Navbar from "../components/Navbar.js";
+import SideBar from "../components/Sidebar.js";
 
 class TaskForm extends Component {
   constructor(props) {
@@ -124,7 +126,13 @@ class TaskForm extends Component {
 
   render() {
     return (
-      <div className="task">
+      <div className="app">
+      <Navbar></Navbar>
+      <div className="screen">
+        <div className="bar">
+          <SideBar></SideBar>
+        </div>
+        <div className="task">
         {this.state.notification ? (
           <NewTaskPopup taskOwner={this.state.owner}></NewTaskPopup>
         ) : null}
@@ -156,17 +164,23 @@ class TaskForm extends Component {
           <input type="text" name="taskLink" onChange={this.changeHandler} />
           <br></br>
           <input
+            className="taskform-button taskform-submit-button"
             name="submit"
             type="submit"
             value="Send the Help Request"
           ></input>
           <input
+            className="taskform-button"
             name="cancel"
             type="submit"
             value="Cancel"
             onClick={this.cancelHandler}
           ></input>
         </form>
+      </div>
+
+
+      </div>
       </div>
     );
   }
