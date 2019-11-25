@@ -103,6 +103,7 @@ class Dashboard extends Component {
                       reviewNotification: true
                     })
                     .then(function() {
+                      console.log("review");
                       that.setState({ reviewNotification: true });
                     })
                     .catch(function(error) {
