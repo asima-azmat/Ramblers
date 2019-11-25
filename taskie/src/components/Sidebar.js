@@ -28,10 +28,11 @@ class SideBar extends Component {
       <div className="side-bar">
 
         <div className="holder"></div>
+        
         <div>
-          <div className="list-item"><img src={icon1} alt="icons" style={{ width: 30, height: 30 }}></img> TEAM DASHBOARD</div>
-          <div className="list-item"><img src={icon2} alt="icons" style={{ width: 30, height: 30 }}></img> MY FREE TIME</div>
-          <div className="list-item"><img src={icon3} alt="icons" style={{ width: 30, height: 30 }}></img> MY TEAM</div>
+          <div className="list-item"><img className="sidebar-list-icon" src={icon1} alt="icons" style={{ width: 30, height: 30 }}></img> TEAM DASHBOARD</div>
+          <div className="list-item"><img className="sidebar-list-icon" src={icon2} alt="icons" style={{ width: 30, height: 30 }}></img> MY FREE TIME</div>
+          <div className="list-item"><img className="sidebar-list-icon" src={icon3} alt="icons" style={{ width: 30, height: 30 }}></img> MY TEAM</div>
         </div>
 
       </div>
