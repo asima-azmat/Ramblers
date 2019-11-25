@@ -2,11 +2,15 @@
 * {
   font-family: "Open Sans", sans-serif;
 }
-.column {
-  float: left;
-  width: 25%;
-  border-left: 1px solid rgb(90, 88, 88);
-  height: 500px;
+/* ==================================================================================== */
+/* ==================================================================================== */
+/* ==================================================================================== */
+.dashboard {
+  margin-top: 10vh;
+  width: 85%;
+  height: 100%;
+  display: block;
+  height: 100%;
 }
 
 /* Clear floats after the columns */
@@ -16,6 +20,71 @@
   clear: both;
   margin: 0;
 }
+
+.column {
+  float: left;
+  width: 25%;
+  border-left: 1px solid black;
+  height: 500px;
+}
+
+/* ==================================================================================== */
+/* ====================================== Titles ====================================== */
+/* ==================================================================================== */
+title {
+  flex-grow: 1;
+}
+
+.column-title {
+  height: 5%;  
+  text-align: center;
+}
+.column-title-h5 {
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+
+}
+
+.help-title {
+  background-color: #f24e4e;
+  /* height: 5%; */
+}
+.accepted-title {
+  background-color: #609eeb;
+  /* height: 5%; */
+}
+.review-title {
+  background-color: #f98f56;
+  /* height: 5%; */
+}
+.done-title {
+  background-color: #48a690;
+  /* height: 5%; */
+}
+
+
+/* ==================================================================================== */
+/* ================================== New Task Button ================================= */
+.button-new-task {
+  display: inline-block;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #f98f56;
+  border: none;
+  border-radius: 15px;
+  width: 90%;
+  height: 100px;
+  margin: 2vh;
+}
+
+/* ==================================================================================== */
+
 @media screen and (max-width: 600px) {
   .column {
     width: 100%;
@@ -24,54 +93,14 @@
     width: 100%;
   }
 }
-.dashboard {
-  margin-top: 10vh;
-  width: 85%;
-  height: 100%;
-  display: block;
-}
 .screen {
   display: flex;
   background: rgb(252, 249, 249);
 }
 .bar {
-  width: 15%;
+  width: 17%;
   display: block;
   border-right: 1px solid white;
 }
-.done-title {
-  background-color: #48a690;
-  height: 1.5cm;
-  width: 7.5cm;
-  color: white;
-  position: fixed;
-}
-.review-title {
-  background-color: #f98f56;
-  height: 1.5cm;
-  width: 7.5cm;
-  color: white;
-  position: fixed;
-}
-.accepted-title {
-  background-color: #609eeb;
-  height: 1.5cm;
-  width: 7.5cm;
-  color: white;
-  position: fixed;
-}
-.help-title {
-  background-color: #f24e4e;
-  height: 1.5cm;
-  width: 7.5cm;
-  color: white;
-  position: fixed;
-}
 
-title {
-  flex-grow: 1;
-}
-
-.col-content {
-  padding-top: 1cm;
-}
+/* ==================================================================================== */

@@ -35,7 +35,7 @@ class Navbar extends Component {
         </div>
 
         <div className="user">
-          <h5>{this.state.displayName}</h5>
+          <h5 className="navbar-name-h5">{this.state.displayName}</h5>
           <div avatar>
             <Avatar src={this.state.userImage}></Avatar>
           </div>

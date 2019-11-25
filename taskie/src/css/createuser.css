@@ -79,13 +79,16 @@ h1, h2 {
     text-align: center;
 }
 
-
-input[type=text] {
+/* input[type=text] */
+.signup-input-text {
     position: relative;
     border-radius: 5px;
     width: 220px;
+    border: 1px solid grey;
 }
-input[type=submit], input[type=button] {
+
+/* input[type=submit], input[type=button]  */
+.input-button {
     width: 200px;
     position: relative;
     justify-content: space-between;
@@ -100,24 +103,12 @@ input[type=submit], input[type=button] {
     
 }
 
-input[type=submit] {
+/* input[type=submit]  */
+.input-submit-button {
     background-color: rgb(249, 143, 86);
     color: white;
 }
 
-button {
-    display: inline-block;
-    font-size: 24px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    outline: none;
-    color: #fff;
-    background-color: #f98f56;
-    border: none;
-    border-radius: 15px;
-  }
-  
 
 
 #login-box {

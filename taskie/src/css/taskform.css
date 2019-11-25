@@ -1,17 +1,28 @@
 .task {
   background-color: #e0e1e6;
   height: 100vh;
-  padding:20px;
+  padding-top: 8%;
+  padding-left: 3%;
 }
 
-.left-fields {
-  width: 50%;
-  height: 100%;
-  display: block;
+/* input[type=submit], input[type=button]  */
+.taskform-button {
+  width: 200px;
+  position: relative;
+  justify-content: space-between;
+  display: inline-block;
+  margin: 5%;
+  margin-left: 10%;
+  padding: 15px 15px;
+  font-size: 1em;
+  text-align: center;
+  border: none;
+  border-radius: 50px;
+  
 }
 
-.right-fields {
-  width: 20%;
-  height: 100%;
-  display: block;
+/* input[type=submit]  */
+.taskform-submit-button {
+  background-color: #F24E59;
+  color: white;
 }
