@@ -90,7 +90,7 @@ class Dashboard extends Component {
             <div className="column">
               <div className="help-title">
                 <Typography component="h1" variant="h6" color="inherit" noWrap>
-                  Help needed
+                  HELP NEEDED
                 </Typography>
               </div>
               <div>
@@ -108,7 +108,7 @@ class Dashboard extends Component {
             <div className="column">
               <div className="accepted-title">
                 <Typography component="h1" variant="h6" color="inherit" noWrap>
-                  Accepted
+                  ACCEPTED
                 </Typography>
               </div>
               <Task taskStatus="Accepted"></Task>
@@ -117,7 +117,7 @@ class Dashboard extends Component {
             <div className="column">
               <div className="review-title">
                 <Typography component="h1" variant="h6" color="inherit" noWrap>
-                  To be reviewed
+                  TO BE REVIEWED
                 </Typography>
               </div>
               <Task taskStatus="Review"></Task>
@@ -132,7 +132,7 @@ class Dashboard extends Component {
                   noWrap
                   style={{ backgroundColor: red }}
                 >
-                  Done
+                  DONE
                 </Typography>
               </div>
               <Task taskStatus="Done"></Task>
