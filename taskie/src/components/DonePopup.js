@@ -6,10 +6,12 @@ function DonePopup(props) {
   return (
     <Popup open modal closeOnDocumentClick>
       <div>
-        <h1>Congratulations Mary </h1>
+        <h1>
+          Thank you John for solving Mary's task & enjoy your 15 minutes!{" "}
+        </h1>
         <br></br>
-        <Link to={`/HelpTaskForm/${props.taskId}`}>
-          <button>Open new task</button>
+        <Link to={`/Home`}>
+          <button>SEE FREE TIME</button>
         </Link>
       </div>
     </Popup>
