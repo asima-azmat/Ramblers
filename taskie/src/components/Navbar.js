@@ -32,7 +32,7 @@ class Navbar extends Component {
         </div>
 
         <div className="title">
-          <h3>Team tasks in progress</h3>
+          <h3></h3>
         </div>
 
         <div className="user">
