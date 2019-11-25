@@ -12,7 +12,7 @@ function ReviewPopup(props) {
         </h1>
         <br></br>
         <Link to={`/HelpTaskForm/${props.taskId}`}>
-          <button>Open new task</button>
+          <button>Go to dashboard</button>
         </Link>
       </div>
     </Popup>
