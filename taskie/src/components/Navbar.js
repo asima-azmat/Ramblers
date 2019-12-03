@@ -32,6 +32,7 @@ class Navbar extends Component {
         </div>
 
         <div className="title">
+          <h3></h3>
         </div>
 
         <div className="user">

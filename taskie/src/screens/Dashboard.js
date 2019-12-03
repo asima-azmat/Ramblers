@@ -203,8 +203,8 @@ class Dashboard extends Component {
 
             <div className="column">
               <div className="help-title">
-                <Typography component="h1" variant="h6" noWrap>
-                  Help needed
+                <Typography component="h1" variant="h6" color="inherit" noWrap>
+                  HELP NEEDED
                 </Typography>
               </div>
               <div className="col-content">
@@ -221,8 +221,8 @@ class Dashboard extends Component {
 
             <div className="column">
               <div className="accepted-title">
-                <Typography component="h1" variant="h6" noWrap>
-                  Accepted
+                <Typography component="h1" variant="h6" color="inherit" noWrap>
+                  ACCEPTED
                 </Typography>
               </div>
               <div className="col-content">
@@ -232,8 +232,8 @@ class Dashboard extends Component {
 
             <div className="column">
               <div className="review-title">
-                <Typography component="h1" variant="h6" noWrap>
-                  To be reviewed
+                <Typography component="h1" variant="h6" color="inherit" noWrap>
+                  TO BE REVIEWED
                 </Typography>
               </div>
               <div className="col-content">
@@ -249,7 +249,7 @@ class Dashboard extends Component {
                   noWrap
                   style={{ backgroundColor: red }}
                 >
-                  Done
+                  DONE
                 </Typography>
               </div>
               <div className="col-content">
