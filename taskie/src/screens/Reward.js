@@ -69,6 +69,7 @@ function Reward() {
                     for your free hour or for your next day off.<bt/>
                     How much time would you like to spend?
                     </Typography>
+                    {/* {{if ((solved.length) * 15 )}} */}
                     <div className="form">
                     <FormControl variant="outlined" className={classes.formControl}>
                         <InputLabel ref={inputLabel} id="input">
