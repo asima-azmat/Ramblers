@@ -2,6 +2,8 @@ import firebase from "firebase";
 import css from "../css/taskform.css";
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import SideBar from "../components/Sidebar";
 
 function DoneTaskForm(props) {
   let { id } = useParams();
@@ -21,8 +23,15 @@ function DoneTaskForm(props) {
     props.history.push("/Home");
   };
 
-  return (
-    <div className="task">
+   return (
+    <div className="app">
+    <Navbar></Navbar>
+    <div className="screen">
+      <div className="bar">
+        <SideBar></SideBar>
+      </div>
+      <div className="dashboard">
+      <div className="task">
       <form>
         <label>Task</label>
         <br></br>
@@ -59,7 +68,7 @@ function DoneTaskForm(props) {
         <p>
           Created by
           <br></br>
-          {task.createdBy}
+          {task.createdByName}
         </p>
         <br></br>
         <p>
@@ -89,6 +98,9 @@ function DoneTaskForm(props) {
           ></input>
         </Link>
       </form>
+    </div>
+    </div>
+    </div>
     </div>
   );
 }

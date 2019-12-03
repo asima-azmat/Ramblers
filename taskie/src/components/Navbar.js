@@ -41,7 +41,12 @@ class Navbar extends Component {
             <Avatar src={this.state.userImage}></Avatar>
           </div>
           <div className="logout">
-            <Button onClick={() => firebase.auth().signOut()}>Logout</Button>
+            <Button 
+            variant="contained"
+            color="default"
+            onClick={() => firebase.auth().signOut()}>
+              Logout
+              </Button>
           </div>
         </div>
 

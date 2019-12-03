@@ -1,13 +1,12 @@
 import React, { Component } from "react";
-import { BrowserRouter as Redirect, Router, Route } from "react-router-dom";
-import firebase, { db } from "firebase";
+import firebase from "firebase";
 import Typography from "@material-ui/core/Typography";
 import css from "../css/dashboard.css";
 import { red } from "@material-ui/core/colors";
 import Navbar from "../components/Navbar";
 import SideBar from "../components/Sidebar";
 import addicon from "../assets/addicon.png";
-import { Link, BrowserRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Task from "../components/Task";
 import ControlledPopup from "../components/ControlledPopup";
 import AcceptedTaskPopup from "../components/AcceptedTaskPopup";
@@ -208,7 +207,7 @@ class Dashboard extends Component {
                   HELP NEEDED
                 </Typography>
               </div>
-              <div>
+              <div className="col-content">
                 <br></br>
                 <Link to="/TaskForm">
                   <button className="button-new-task">
@@ -226,7 +225,9 @@ class Dashboard extends Component {
                   ACCEPTED
                 </Typography>
               </div>
-              <Task taskStatus="Accepted"></Task>
+              <div className="col-content">
+              <Task taskStatus="Typography"></Task>
+              </div>
             </div>
 
             <div className="column">
@@ -235,7 +236,9 @@ class Dashboard extends Component {
                   TO BE REVIEWED
                 </Typography>
               </div>
+              <div className="col-content">
               <Task taskStatus="Review"></Task>
+              </div>
             </div>
 
             <div className="column">
@@ -243,14 +246,15 @@ class Dashboard extends Component {
                 <Typography
                   component="h1"
                   variant="h6"
-                  color="inherit"
                   noWrap
                   style={{ backgroundColor: red }}
                 >
                   DONE
                 </Typography>
               </div>
+              <div className="col-content">
               <Task taskStatus="Done"></Task>
+              </div>
             </div>
             
           </div>

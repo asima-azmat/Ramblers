@@ -17,9 +17,6 @@
     width: 17%;
     height: 10%;
     z-index: 0;
-    color: red;
-    background: red;
-    border: 8px solid red;
 }
 
 .sidenav a {
@@ -39,7 +36,7 @@
 
 
 .list-item {
-    border-bottom: 1px solid white;
+    border-top: 1px solid white;
     color: white;
 }
 

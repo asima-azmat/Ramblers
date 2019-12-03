@@ -2,8 +2,8 @@ import firebase from "firebase";
 import css from "../css/taskform.css";
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import AcceptingTask from "../components/AcceptingTask";
-import ReviewPopup from "../components/ReviewPopup";
+import Navbar from "../components/Navbar";
+import SideBar from "../components/Sidebar";
 
 function AcceptTaskForm(props) {
   let { id } = useParams();
@@ -39,8 +39,15 @@ function AcceptTaskForm(props) {
     props.history.push("/Home");
   };
 
-  return (
-    <div className="task">
+   return (
+    <div className="app">
+    <Navbar></Navbar>
+    <div className="screen">
+      <div className="bar">
+        <SideBar></SideBar>
+      </div>
+      <div className="dashboard">
+      <div className="task">
       <form onSubmit={reviewHandler}>
         <label>Task</label>
         <br></br>
@@ -77,7 +84,7 @@ function AcceptTaskForm(props) {
         <p>
           Created by
           <br></br>
-          {task.createdBy}
+          {task.createdByName}
         </p>
         <br></br>
         <p>
@@ -120,6 +127,9 @@ function AcceptTaskForm(props) {
           ></input>
         </Link>
       </form>
+    </div>
+    </div>
+    </div>
     </div>
   );
 }

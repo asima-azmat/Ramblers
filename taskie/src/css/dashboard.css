@@ -99,6 +99,7 @@ title {
 }
 .screen {
   display: flex;
+  background: rgb(252, 249, 249);
 }
 .bar {
   width: 17%;

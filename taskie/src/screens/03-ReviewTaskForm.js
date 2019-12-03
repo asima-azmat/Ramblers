@@ -2,10 +2,13 @@ import firebase from "firebase";
 import css from "../css/taskform.css";
 import React, {useState, useEffect} from "react";
 import { Link, useParams } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import SideBar from "../components/Sidebar";
 
 function ReviewTaskForm (props) {
   
   let { id } = useParams();
+
   const [task,setTask] = useState([]);
    useEffect(() => {
     const taskData = firebase.firestore().collection('Task').doc(id)
@@ -13,10 +16,27 @@ function ReviewTaskForm (props) {
       setTask(doc.data());
     })
    }, []);
+   
+  // const usertoReward = task.idAcceptedBy;
+
+  //  console.log("ID of User to Reward:", usertoReward);
+
+  // const [rewardUser,setRewardUser] = useState([]);
+  //   useEffect(() => {
+  //   const rewardUserData = firebase.firestore().collection('User').doc(usertoReward)
+  //   rewardUserData.get().then(function(doc) {
+  //   setRewardUser(doc.data());
+  //   })
+  //   }, []);
+  //   console.log("wtf", rewardUser.email);
 
    const doneHandler = event => {
     event.preventDefault();
-    firebase.firestore().collection('Task').doc(id).update({taskStatus: "Done"});
+    firebase
+    .firestore()
+    .collection('Task')
+    .doc(id)
+    .update({taskStatus: "Done", taskResolvedBy: task.idAcceptedBy});
     props.history.push("/Home");
    };
 
@@ -26,7 +46,14 @@ function ReviewTaskForm (props) {
    };
 
    return (
-    <div className="task">
+    <div className="app">
+    <Navbar></Navbar>
+    <div className="screen">
+      <div className="bar">
+        <SideBar></SideBar>
+      </div>
+      <div className="dashboard">
+      <div className="task">
       <form onSubmit= {doneHandler}>
         <label>Task</label>
         <br></br>
@@ -58,7 +85,7 @@ function ReviewTaskForm (props) {
         <p>
           Created by
           <br></br>
-          {task.createdBy}
+          {task.createdByName}
         </p>
         <br></br>
         <p>
@@ -98,6 +125,9 @@ function ReviewTaskForm (props) {
         ></input>
         </Link>
       </form>
+    </div>
+    </div>
+    </div>
     </div>
   );
 }
