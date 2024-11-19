@@ -5,7 +5,7 @@
   "dependencies": {
     "@material-ui/core": "^4.5.2",
     "bootstrap": "^4.3.1",
-    "firebase": "^7.2.1",
+    "firebase": "^10.9.0",
     "firebaseui": "^4.2.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
